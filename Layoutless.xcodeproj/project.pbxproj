@@ -8,12 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		EC2870E2201E437E00702624 /* Layoutless.h in Headers */ = {isa = PBXBuildFile; fileRef = EC2870E0201E437E00702624 /* Layoutless.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EC2870EA201E43C900702624 /* Dimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2870E9201E43C900702624 /* Dimension.swift */; };
+		EC2870EC201E444700702624 /* Anchorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2870EB201E444700702624 /* Anchorable.swift */; };
+		EC2870EE201E446900702624 /* LayoutProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2870ED201E446900702624 /* LayoutProtocol.swift */; };
+		EC2870F0201E448100702624 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2870EF201E448100702624 /* Layout.swift */; };
+		EC2870F2201E44CE00702624 /* Layoutless+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2870F1201E44CE00702624 /* Layoutless+UIKit.swift */; };
+		EC2870F4201E455A00702624 /* LayoutNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2870F3201E455A00702624 /* LayoutNode.swift */; };
+		ECCF2CE420246CD9008099DD /* Layoutless.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF2CE320246CD9008099DD /* Layoutless.swift */; };
+		ECCF2CE620246DF0008099DD /* ChildNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF2CE520246DF0008099DD /* ChildNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		EC2870DD201E437E00702624 /* Layoutless.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Layoutless.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC2870E0201E437E00702624 /* Layoutless.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Layoutless.h; sourceTree = "<group>"; };
 		EC2870E1201E437E00702624 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EC2870E9201E43C900702624 /* Dimension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimension.swift; sourceTree = "<group>"; };
+		EC2870EB201E444700702624 /* Anchorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anchorable.swift; sourceTree = "<group>"; };
+		EC2870ED201E446900702624 /* LayoutProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutProtocol.swift; sourceTree = "<group>"; };
+		EC2870EF201E448100702624 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
+		EC2870F1201E44CE00702624 /* Layoutless+UIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Layoutless+UIKit.swift"; sourceTree = "<group>"; };
+		EC2870F3201E455A00702624 /* LayoutNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutNode.swift; sourceTree = "<group>"; };
+		ECCF2CE320246CD9008099DD /* Layoutless.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layoutless.swift; sourceTree = "<group>"; };
+		ECCF2CE520246DF0008099DD /* ChildNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +46,7 @@
 		EC2870D3201E437E00702624 = {
 			isa = PBXGroup;
 			children = (
+				EC2870E8201E43B200702624 /* Sources */,
 				EC2870DF201E437E00702624 /* Layoutless */,
 				EC2870DE201E437E00702624 /* Products */,
 			);
@@ -50,6 +67,21 @@
 				EC2870E1201E437E00702624 /* Info.plist */,
 			);
 			path = Layoutless;
+			sourceTree = "<group>";
+		};
+		EC2870E8201E43B200702624 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				EC2870E9201E43C900702624 /* Dimension.swift */,
+				EC2870EB201E444700702624 /* Anchorable.swift */,
+				EC2870F3201E455A00702624 /* LayoutNode.swift */,
+				EC2870ED201E446900702624 /* LayoutProtocol.swift */,
+				EC2870EF201E448100702624 /* Layout.swift */,
+				ECCF2CE520246DF0008099DD /* ChildNode.swift */,
+				ECCF2CE320246CD9008099DD /* Layoutless.swift */,
+				EC2870F1201E44CE00702624 /* Layoutless+UIKit.swift */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -95,6 +127,7 @@
 				TargetAttributes = {
 					EC2870DC201E437E00702624 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -131,6 +164,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC2870F2201E44CE00702624 /* Layoutless+UIKit.swift in Sources */,
+				EC2870EE201E446900702624 /* LayoutProtocol.swift in Sources */,
+				EC2870F4201E455A00702624 /* LayoutNode.swift in Sources */,
+				EC2870F0201E448100702624 /* Layout.swift in Sources */,
+				ECCF2CE620246DF0008099DD /* ChildNode.swift in Sources */,
+				EC2870EC201E444700702624 /* Anchorable.swift in Sources */,
+				ECCF2CE420246CD9008099DD /* Layoutless.swift in Sources */,
+				EC2870EA201E43C900702624 /* Dimension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,7 +227,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -240,7 +281,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -253,6 +294,7 @@
 		EC2870E6201E437E00702624 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -265,6 +307,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Absurd-Abstractions.Layoutless";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -273,6 +316,7 @@
 		EC2870E7201E437E00702624 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
