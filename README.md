@@ -1,3 +1,7 @@
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](#carthage)
+[![Platform](https://img.shields.io/cocoapods/p/Layoutless.svg?style=flat)](http://cocoadocs.org/docsets/Layoutless/)
+[![Twitter](https://img.shields.io/badge/twitter-@srdanrasic-red.svg?style=flat)](https://twitter.com/srdanrasic)
+
 # Layoutless
 
 Layoutless enables you to spend less time writing UI code. It provides a way to declaratively style and layout views. Here is an example of how UI code looks like when written against Layoutless:
@@ -105,7 +109,7 @@ class ArticleView: View { // or ArticleViewController: ViewController
 }
 ```
 
-`View` is basically a UIView subclass with `subviewsLayout` property that we can override to provide our own layout. That is all there is to it. [Check it out]().
+`View` is basically a UIView subclass with `subviewsLayout` property that we can override to provide our own layout. That is all there is to it. [Check it out](https://github.com/AbsurdAbstractions/Layoutless/blob/master/Sources/Views/View.swift).
 
 Layoutless provides base views like: `View`, `Control`, `Label`, `Button`, `ImageView`, `TextField`, etc.
 
