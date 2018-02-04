@@ -1,6 +1,6 @@
 # Layoutless
 
-Layoutless enables you to spend less time writing UI code. It provides a way to declaratively style and layout your views. Here is an example of how UI code looks like when written against Layoutless:
+Layoutless enables you to spend less time writing UI code. It provides a way to declaratively style and layout views. Here is an example of how UI code looks like when written against Layoutless:
 
 <img src="Assets/profile@2x.png" align="right" width="200px" hspace="30px" vspace="0px">
 
@@ -34,7 +34,7 @@ let imageView = UIImageView()
 let bodyLabel = UILabel()
 ```
 
-Let us now build our layout. A layout is something that defines how individual views are sized, positioned and structured withing a view hierarchy. Layoutless can represent layout with the `Layout` type, however, we rarely have to work with it because the framework provides extensions methods on UIView and few global functions that can be used to build layouts.
+Let us now build our layout. A layout is something that defines how individual views are sized, positioned and structured withing a view hierarchy. Layoutless can represent layout with the `Layout` type, however, we rarely have to work with it directly because the framework provides extensions methods on UIView and few global functions that can be used to build layouts.
 
 For example, to stack our two views vertically, we can use `stack` function:
 
@@ -45,7 +45,7 @@ let layout = stack(.vertical)(
 )
 ```
 
-Next, we would prefer if the body would have some side margins, so it is not laid out from the edge to the edge of the screen. That is simple as insetting a view:
+Next, we would prefer if the body would have some side margins, so it is not laid out from the edge to the edge of the screen. That is as simple as insetting a view:
 
 ```swift
 let layout = stack(.vertical)(
@@ -105,13 +105,13 @@ class ArticleView: View { // or ArticleViewController: ViewController
 }
 ```
 
-`View` is basically a UIView subclass with `subviewsLayout` property that we can override to provide our own layout. That is all there is to it.
+`View` is basically a UIView subclass with `subviewsLayout` property that we can override to provide our own layout. That is all there is to it. [Check it out]().
 
 Layoutless provides base views like: `View`, `Control`, `Label`, `Button`, `ImageView`, `TextField`, etc.
 
 ## Styling 
 
-For a UI code to be more declarative, apart from solving the layout problem, we also have to solve the styling problem. It turns out, there is a very simple solution to the problem. You can find a detailed explanation of the solution presented in the [article about it](https://hackernoon.com/simple-stylesheets-in-swift-6dda57b5b00d), so let's just see how it works.
+For UI code to be more declarative, apart from solving the layout problem, we also have to solve the styling problem. It turns out, there is a very simple solution to that problem. You can find a detailed explanation of the solution presented in the [article about it](https://hackernoon.com/simple-stylesheets-in-swift-6dda57b5b00d), so let's just see how it works.
 
 We will define something called Stylesheet in an extension of the view or the view controller we are about to style. A Stylesheet is just a namespace (i.e. an enum) with a collection of styles.
 

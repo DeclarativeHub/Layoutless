@@ -26,6 +26,8 @@ import UIKit
 
 open class Button: UIButton {
 
+    /// A closure that gets called with `self` as an argument on `layoutSubviews`.
+    /// Use it to configure styles that are derived from the view bounds.
     public var onLayout: (Button) -> Void = { _ in }
     
     public var intrinsicContentInsets: CGSize = .zero

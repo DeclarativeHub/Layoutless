@@ -26,6 +26,10 @@ import UIKit
 
 open class CollectionViewCell: UICollectionViewCell {
 
+    /// A closure that gets called with `self` as an argument on `layoutSubviews`.
+    /// Use it to configure styles that are derived from the view bounds.
+    public var onLayout: (CollectionViewCell) -> Void = { _ in }
+
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -40,6 +44,7 @@ open class CollectionViewCell: UICollectionViewCell {
 
     open override func layoutSubviews() {
         super.layoutSubviews()
+        onLayout(self)
         if layer.shadowOpacity > 0 {
             layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: layer.cornerRadius).cgPath
         }

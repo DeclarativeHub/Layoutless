@@ -26,6 +26,10 @@ import UIKit
 
 open class TableViewCell: UITableViewCell {
 
+    /// A closure that gets called with `self` as an argument on `layoutSubviews`.
+    /// Use it to configure styles that are derived from the view bounds.
+    public var onLayout: (TableViewCell) -> Void = { _ in }
+
     public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
@@ -40,6 +44,7 @@ open class TableViewCell: UITableViewCell {
 
     open override func layoutSubviews() {
         super.layoutSubviews()
+        onLayout(self)
         if layer.shadowOpacity > 0 {
             layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: layer.cornerRadius).cgPath
         }

@@ -26,6 +26,8 @@ import UIKit
 
 open class TextField: UITextField {
 
+    /// A closure that gets called with `self` as an argument on `layoutSubviews`.
+    /// Use it to configure styles that are derived from the view bounds.
     public var onLayout: (TextField) -> Void = { _ in }
 
     public var textInsets: UIEdgeInsets = .zero

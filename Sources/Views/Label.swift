@@ -26,9 +26,13 @@ import UIKit
 
 open class Label: UILabel {
 
+    /// A closure that gets called with `self` as an argument on `layoutSubviews`.
+    /// Use it to configure styles that are derived from the view bounds.
     public var onLayout: (Label) -> Void = { _ in }
 
     public var intrinsicContentInsets: CGSize = .zero
+
+    /// Text insets. Use it to add padding to the text within the label bounds.
     public var textInsets: UIEdgeInsets = .zero
 
     public var attributes: [NSAttributedStringKey: Any] = [:] {

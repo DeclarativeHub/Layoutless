@@ -26,6 +26,8 @@ import UIKit
 
 open class View: UIView {
 
+    /// A closure that gets called with `self` as an argument on `layoutSubviews`.
+    /// Use it to configure styles that are derived from the view bounds.
     public var onLayout: (View) -> Void = { _ in }
 
     public override init(frame: CGRect) {
