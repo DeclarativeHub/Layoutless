@@ -25,16 +25,16 @@ There are three main features of Layoutless.
 
 ## Layout Patterns
 
-In order to make UI code more declarative, one has to have a way of abstracting and reusing common layout patterns like sizing of views, laying a view out in a parent or stacking and grouping multiple views together. Layoutless makes this possible by providing types that enable you to make such patterns.
+In order to make UI code more declarative, one has to have a way of abstracting and reusing common layout patterns like the sizing of views, laying a view out in a parent or stacking and grouping multiple views together. Layoutless makes this possible by providing types that enable you to make such patterns.
 
-Imagine that we need to build a news article screen where we have an image on top and a text below it representing the article body. First we would define our views like: 
+Imagine that we need to build a news article screen where we have an image on top and a text below it representing the article body. First, we would define our views like: 
 
 ```swift
 let imageView = UIImageView()
 let bodyLabel = UILabel()
 ```
 
-Let us now build our layout. A layout is something that defines how individual views are sized, positioned and structured withing a view hierarchy. Layoutless can represent layout with the `Layout` type, however we rarely have to work with it because the framework provides extensions methods on UIView and few global functions that can be used to build layouts.
+Let us now build our layout. A layout is something that defines how individual views are sized, positioned and structured withing a view hierarchy. Layoutless can represent layout with the `Layout` type, however, we rarely have to work with it because the framework provides extensions methods on UIView and few global functions that can be used to build layouts.
 
 For example, to stack our two views vertically, we can use `stack` function:
 
@@ -72,13 +72,13 @@ let layout = stack(.vertical)(
 ).scrolling(.vertical).fillingParent()
 ```
 
-What we end up with is a `layout` variable that is an instance of the `Layout` type. It represents a description of our layout. Nothing has actually been laid out at this point yet. No constrains have been set up yet. To build the layout and make the framework create all relevant constraints and intermediary views, we need to lay our layout out:
+What we end up with is a `layout` variable that is an instance of the `Layout` type. It represents a description of our layout. Nothing has actually been laid out at this point yet. No constraints have been set up yet. To build the layout and make the framework create all relevant constraints and intermediary views, we need to lay our layout out:
 
 ```swift
 layout.layout(in: parentView)
 ```
 
-And that's it! The framework will create necessary Auto Layout constraints, embed the stack into a scroll view and add that as a subview of our parent view. To learn more about additional layout patterns, [peek into the implementation](). It's crazy simple! You can easily create your own patterns. If you think you have something that could be usefull for everyone, feel free to make a PR.
+And that's it! The framework will create necessary Auto Layout constraints, embed the stack into a scroll view and add that as a subview of our parent view. To learn more about additional layout patterns, [peek into the implementation](https://github.com/AbsurdAbstractions/Layoutless/blob/master/Sources/Layout/Layoutless.swift). It's crazy simple! You can easily create your own patterns. If you think you have something that could be useful for everyone, feel free to make a PR.
 
 Keep reading if you wish things were even simpler. 
 
@@ -86,9 +86,9 @@ Keep reading if you wish things were even simpler.
 
 Building declarative layouts is an awesome experience, but that last line to lay our layout out is not really declarative, it is an imperative call and we are not happy about it.
 
-What we need is a place where we can just put out layout and let the "system" decide when it needs to be laid out. For that reason, Layoutless provides a subclasses of base UIKit views that we should use as building blocks for our layouts. Those subclasses are very trivial, but they enable us this:
+What we need is a place where we can just put our layout and let the "system" decide when it needs to be laid out. For that reason, Layoutless provides subclasses of base UIKit views that we should use as building blocks for our layouts. Those subclasses are very trivial, but they enable us to do this:
 
-<img src="Assets/article@2x.png" align="left" width="200px" hspace="30px" vspace="20px">
+<img src="Assets/article@2x.png" align="left" width="200px" hspace="20px" vspace="20px">
 
 ```swift
 class ArticleView: View { // or ArticleViewController: ViewController
@@ -111,7 +111,7 @@ Layoutless provides base views like: `View`, `Control`, `Label`, `Button`, `Imag
 
 ## Styling 
 
-For a UI code to be more declarative, apart from solving the layout problem, we also have to solve the styling problem. It turns out, there is a very simple solution to the problem. You can find detailed explanation behind the solution presented in the [article about it](https://hackernoon.com/simple-stylesheets-in-swift-6dda57b5b00d), so let's just see how it works.
+For a UI code to be more declarative, apart from solving the layout problem, we also have to solve the styling problem. It turns out, there is a very simple solution to the problem. You can find a detailed explanation of the solution presented in the [article about it](https://hackernoon.com/simple-stylesheets-in-swift-6dda57b5b00d), so let's just see how it works.
 
 We will define something called Stylesheet in an extension of the view or the view controller we are about to style. A Stylesheet is just a namespace (i.e. an enum) with a collection of styles.
 
@@ -135,7 +135,7 @@ extension ArticleView {
 
 As you can see, each style is an instance of `Style` type. You create Style by providing a closure that styles a view of a given type. That's all there is to it.
 
-To use our styles, we will just instatiate our views using the convenience intializers provided by the framework:
+To use our styles, we will just instantiate our views using the convenience initializers provided by the framework:
 
 ```swift
 class ArticleView: View {
