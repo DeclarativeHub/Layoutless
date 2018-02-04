@@ -22,13 +22,19 @@
 //  THE SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
+import UIKit
 
-//! Project version number for Layoutless.
-FOUNDATION_EXPORT double LayoutlessVersionNumber;
+/// A type whose instances provide basic layout anchors.
+public protocol Anchorable {
 
-//! Project version string for Layoutless.
-FOUNDATION_EXPORT const unsigned char LayoutlessVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <Layoutless/PublicHeader.h>
-
+    var leadingAnchor: NSLayoutXAxisAnchor { get }
+    var trailingAnchor: NSLayoutXAxisAnchor { get }
+    var leftAnchor: NSLayoutXAxisAnchor { get }
+    var rightAnchor: NSLayoutXAxisAnchor { get }
+    var topAnchor: NSLayoutYAxisAnchor { get }
+    var bottomAnchor: NSLayoutYAxisAnchor { get }
+    var widthAnchor: NSLayoutDimension { get }
+    var heightAnchor: NSLayoutDimension { get }
+    var centerXAnchor: NSLayoutXAxisAnchor { get }
+    var centerYAnchor: NSLayoutYAxisAnchor { get }
+}

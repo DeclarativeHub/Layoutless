@@ -22,13 +22,37 @@
 //  THE SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
+import UIKit
 
-//! Project version number for Layoutless.
-FOUNDATION_EXPORT double LayoutlessVersionNumber;
+// MARK: Protocol conformances
 
-//! Project version string for Layoutless.
-FOUNDATION_EXPORT const unsigned char LayoutlessVersionString[];
+extension UIView: Anchorable {
 
-// In this header, you should import all the public headers of your framework using statements like #import <Layoutless/PublicHeader.h>
+    // Conforms automatically
+}
 
+extension UILayoutGuide: Anchorable {
+
+    // Conforms automatically
+}
+
+extension UIView: LayoutProtocol {
+
+    /// UIView's layout node is the view itself. Returns `self`.
+    public func makeLayoutNode() -> UIView {
+        return self
+    }
+}
+
+extension UIView: LayoutNode {
+
+    /// Makes the receiver a subview of the container.
+    public func layout(in container: UIView) {
+        translatesAutoresizingMaskIntoConstraints = false
+        if let container = container as? UIStackView {
+            container.addArrangedSubview(self)
+        } else {
+            container.addSubview(self)
+        }
+    }
+}

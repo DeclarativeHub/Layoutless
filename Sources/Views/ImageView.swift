@@ -22,13 +22,46 @@
 //  THE SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
+import UIKit
 
-//! Project version number for Layoutless.
-FOUNDATION_EXPORT double LayoutlessVersionNumber;
+open class ImageView: UIImageView {
 
-//! Project version string for Layoutless.
-FOUNDATION_EXPORT const unsigned char LayoutlessVersionString[];
+    public var onLayout: (ImageView) -> Void = { _ in }
 
-// In this header, you should import all the public headers of your framework using statements like #import <Layoutless/PublicHeader.h>
+    public override init(image: UIImage? = nil) {
+        super.init(image: image)
+        setup()
+        defineLayout()
+    }
 
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+        defineLayout()
+    }
+
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+        defineLayout()
+    }
+
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        onLayout(self)
+        if layer.shadowOpacity > 0 {
+            layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: layer.cornerRadius).cgPath
+        }
+    }
+
+    open func setup() {
+    }
+
+    open func defineLayout() {
+        _ = subviewsLayout.layout(in: self)
+    }
+
+    open var subviewsLayout: AnyLayout {
+        return EmptyLayout()
+    }
+}

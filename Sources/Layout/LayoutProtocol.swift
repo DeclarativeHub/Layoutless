@@ -22,13 +22,33 @@
 //  THE SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
+import Foundation
 
-//! Project version number for Layoutless.
-FOUNDATION_EXPORT double LayoutlessVersionNumber;
+/// A type-erased `LayoutProtocol`.
+public protocol AnyLayout: LayoutNode {
 
-//! Project version string for Layoutless.
-FOUNDATION_EXPORT const unsigned char LayoutlessVersionString[];
+    /// Generates the layout and returns the layout's root node.
+    func makeAnyLayoutNode() -> LayoutNode
+}
 
-// In this header, you should import all the public headers of your framework using statements like #import <Layoutless/PublicHeader.h>
+/// A type that encapsulates layout, basically anything that can make a layout node.
+public protocol LayoutProtocol: AnyLayout {
+    associatedtype LayoutNode: Layoutless.LayoutNode
 
+    /// Generates the layout and returns the layout's root node.
+    func makeLayoutNode() -> LayoutNode
+}
+
+extension LayoutProtocol {
+
+    public func makeAnyLayoutNode() -> Layoutless.LayoutNode {
+        return makeLayoutNode()
+    }
+}
+
+extension AnyLayout {
+
+    public func layout(in container: UIView) {
+        makeAnyLayoutNode().layout(in: container)
+    }
+}

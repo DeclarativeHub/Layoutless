@@ -22,13 +22,12 @@
 //  THE SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
+import UIKit
 
-//! Project version number for Layoutless.
-FOUNDATION_EXPORT double LayoutlessVersionNumber;
+/// A type that represents a node in the layout tree.
+/// A layout node is usually a view, but can also be an abstract type representing some layout calculation.
+public protocol LayoutNode {
 
-//! Project version string for Layoutless.
-FOUNDATION_EXPORT const unsigned char LayoutlessVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <Layoutless/PublicHeader.h>
-
+    /// Layouts the receiver within the container.
+    func layout(in container: UIView)
+}

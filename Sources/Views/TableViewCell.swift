@@ -22,13 +22,38 @@
 //  THE SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
+import UIKit
 
-//! Project version number for Layoutless.
-FOUNDATION_EXPORT double LayoutlessVersionNumber;
+open class TableViewCell: UITableViewCell {
 
-//! Project version string for Layoutless.
-FOUNDATION_EXPORT const unsigned char LayoutlessVersionString[];
+    public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setup()
+        defineLayout()
+    }
 
-// In this header, you should import all the public headers of your framework using statements like #import <Layoutless/PublicHeader.h>
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+        defineLayout()
+    }
+
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        if layer.shadowOpacity > 0 {
+            layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: layer.cornerRadius).cgPath
+        }
+    }
+
+    open func setup() {
+    }
+
+    open func defineLayout() {
+        _ = subviewsLayout.layout(in: contentView)
+    }
+
+    open var subviewsLayout: AnyLayout {
+        return EmptyLayout()
+    }
+}
 

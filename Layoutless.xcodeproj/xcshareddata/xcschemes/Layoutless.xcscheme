@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "EC2870DC201E437E00702624"
-               BuildableName = "Layoutless.framework"
-               BlueprintName = "Layoutless"
+               BuildableName = "Layoutless_iOS.framework"
+               BlueprintName = "Layoutless-iOS"
                ReferencedContainer = "container:Layoutless.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -48,8 +48,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EC2870DC201E437E00702624"
-            BuildableName = "Layoutless.framework"
-            BlueprintName = "Layoutless"
+            BuildableName = "Layoutless_iOS.framework"
+            BlueprintName = "Layoutless-iOS"
             ReferencedContainer = "container:Layoutless.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -66,8 +66,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EC2870DC201E437E00702624"
-            BuildableName = "Layoutless.framework"
-            BlueprintName = "Layoutless"
+            BuildableName = "Layoutless_iOS.framework"
+            BlueprintName = "Layoutless-iOS"
             ReferencedContainer = "container:Layoutless.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

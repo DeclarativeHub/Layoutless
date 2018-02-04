@@ -22,13 +22,50 @@
 //  THE SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
+import UIKit
 
-//! Project version number for Layoutless.
-FOUNDATION_EXPORT double LayoutlessVersionNumber;
+open class Button: UIButton {
 
-//! Project version string for Layoutless.
-FOUNDATION_EXPORT const unsigned char LayoutlessVersionString[];
+    public var onLayout: (Button) -> Void = { _ in }
+    
+    public var intrinsicContentInsets: CGSize = .zero
+    
+    open override var intrinsicContentSize: CGSize {
+        var size = super.intrinsicContentSize
+        size.width += intrinsicContentInsets.width * 2
+        size.height += intrinsicContentInsets.height * 2
+        return size
+    }
+    
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+        defineLayout()
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+        defineLayout()
+    }
+    
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        onLayout(self)
+        if layer.shadowOpacity > 0 {
+            layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: layer.cornerRadius).cgPath
+        }
+    }
+    
+    open func setup() {
+    }
 
-// In this header, you should import all the public headers of your framework using statements like #import <Layoutless/PublicHeader.h>
+    open func defineLayout() {
+        _ = subviewsLayout.layout(in: self)
+    }
+
+    open var subviewsLayout: AnyLayout {
+        return EmptyLayout()
+    }
+}
 

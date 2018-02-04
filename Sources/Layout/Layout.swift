@@ -22,13 +22,31 @@
 //  THE SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
+/// A type that represents layout calculation as a closure.
+public struct Layout<LayoutNode: Layoutless.LayoutNode>: LayoutProtocol {
 
-//! Project version number for Layoutless.
-FOUNDATION_EXPORT double LayoutlessVersionNumber;
+    private let _generate: () -> LayoutNode
 
-//! Project version string for Layoutless.
-FOUNDATION_EXPORT const unsigned char LayoutlessVersionString[];
+    public init(_ generate: @escaping () -> LayoutNode) {
+        _generate = generate
+    }
 
-// In this header, you should import all the public headers of your framework using statements like #import <Layoutless/PublicHeader.h>
+    public static func just(_ node: LayoutNode) -> Layout<LayoutNode> {
+        return Layout { node }
+    }
 
+    public func makeLayoutNode() -> LayoutNode {
+        return _generate()
+    }
+}
+
+/// A layout of nothing.
+public func EmptyLayout() -> Layout<EmptyLayoutNode> {
+    return Layout.just(EmptyLayoutNode())
+}
+
+/// A node that does not have any content.
+public struct EmptyLayoutNode: LayoutNode {
+    public init() {}
+    public func layout(in container: UIView) {}
+}

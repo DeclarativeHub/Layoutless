@@ -22,13 +22,33 @@
 //  THE SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
+import UIKit
 
-//! Project version number for Layoutless.
-FOUNDATION_EXPORT double LayoutlessVersionNumber;
+open class ViewController: UIViewController {
 
-//! Project version string for Layoutless.
-FOUNDATION_EXPORT const unsigned char LayoutlessVersionString[];
+    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        setup()
+    }
 
-// In this header, you should import all the public headers of your framework using statements like #import <Layoutless/PublicHeader.h>
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
 
+    open override func viewDidLoad() {
+        super.viewDidLoad()
+        defineLayout()
+    }
+    
+    open func setup() {
+    }
+
+    open func defineLayout() {
+        _ = subviewsLayout.layout(in: view)
+    }
+
+    open var subviewsLayout: AnyLayout {
+        return EmptyLayout()
+    }
+}
