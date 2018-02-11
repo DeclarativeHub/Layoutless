@@ -31,6 +31,12 @@ There are three main features of Layoutless.
 
 In order to make UI code more declarative, one has to have a way of abstracting and reusing common layout patterns like the sizing of views, laying a view out in a parent or stacking and grouping multiple views together. Layoutless makes this possible by providing types that enable you to make such patterns.
 
+### Basic Patterns
+
+<img src="Assets/patterns@2x.png" width="800px" hspace="-30px">
+
+### Walkthrough
+
 Imagine that we need to build a news article screen where we have an image on top and a text below it representing the article body. First, we would define our views like: 
 
 ```swift
