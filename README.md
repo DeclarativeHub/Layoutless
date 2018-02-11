@@ -23,7 +23,7 @@ class ProfileView: View {
 }
 ```
 
-Layoutless is not just another DSL that simplifies Auto Layout code, rather it is a layer on top of Auto Layout and UIKit that provides a way to abstract common layout patterns and enable consistent styling approach. Layoutless is a very lightweight library - it has only around 1k lines of code.
+Layoutless is not just another DSL that simplifies Auto Layout code, rather it is a layer on top of Auto Layout and UIKit that provides a way to abstract common layout patterns and enable consistent styling approach. It is a very lightweight library - around 1k lines of code.
 
 There are three main features of Layoutless.
 
