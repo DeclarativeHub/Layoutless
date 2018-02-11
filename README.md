@@ -33,7 +33,7 @@ In order to make UI code more declarative, one has to have a way of abstracting 
 
 ### Basic Patterns
 
-<img src="Assets/patterns@2x.png" width="800px" hspace="-30px">
+<img src="Assets/patterns@2x.png" width="860px">
 
 ### Walkthrough
 
