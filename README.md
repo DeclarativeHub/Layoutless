@@ -11,8 +11,8 @@ Layoutless enables you to spend less time writing UI code. It provides a way to 
 ```swift
 class ProfileView: View {
 
-    let imageView = ImageView(style: Stylesheet.profileImage)
-    let nameLabel = Label(style: Stylesheet.profileName)
+    let imageView = UIImageView(style: Stylesheet.profileImage)
+    let nameLabel = UILabel(style: Stylesheet.profileName)
 
     override var subviewsLayout: AnyLayout {
         return stack(.vertical, alignment: .center)(
