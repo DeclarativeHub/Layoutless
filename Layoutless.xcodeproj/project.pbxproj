@@ -243,7 +243,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0920;
-				ORGANIZATIONNAME = "Absurd Abstractions";
+				ORGANIZATIONNAME = "Declarative Hub";
 				TargetAttributes = {
 					EC2870DC201E437E00702624 = {
 						CreatedOnToolsVersion = 9.2;
@@ -471,7 +471,7 @@
 				INFOPLIST_FILE = Layoutless/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = AbsurdAbstractions.Layoutless;
+				PRODUCT_BUNDLE_IDENTIFIER = DeclarativeHub.Layoutless;
 				PRODUCT_NAME = Layoutless;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -493,7 +493,7 @@
 				INFOPLIST_FILE = Layoutless/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = AbsurdAbstractions.Layoutless;
+				PRODUCT_BUNDLE_IDENTIFIER = DeclarativeHub.Layoutless;
 				PRODUCT_NAME = Layoutless;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
@@ -513,7 +513,7 @@
 				INFOPLIST_FILE = Layoutless/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "AbsurdAbstractions.Layoutless-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "DeclarativeHub.Layoutless-tvOS";
 				PRODUCT_NAME = Layoutless;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
@@ -535,7 +535,7 @@
 				INFOPLIST_FILE = Layoutless/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "AbsurdAbstractions.Layoutless-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "DeclarativeHub.Layoutless-tvOS";
 				PRODUCT_NAME = Layoutless;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;

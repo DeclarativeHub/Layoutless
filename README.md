@@ -88,7 +88,7 @@ What we end up with is a `layout` variable that is an instance of the `Layout` t
 layout.layout(in: parentView)
 ```
 
-And that's it! The framework will create necessary Auto Layout constraints, embed the stack into a scroll view and add that as a subview of our parent view. To learn more about additional layout patterns, [peek into the implementation](https://github.com/AbsurdAbstractions/Layoutless/blob/master/Sources/Layout/Layoutless.swift). It's crazy simple! You can easily create your own patterns. If you think you have something that could be useful for everyone, feel free to make a PR.
+And that's it! The framework will create necessary Auto Layout constraints, embed the stack into a scroll view and add that as a subview of our parent view. To learn more about additional layout patterns, [peek into the implementation](https://github.com/DeclarativeHub/Layoutless/blob/master/Sources/Layout/Layoutless.swift). It's crazy simple! You can easily create your own patterns. If you think you have something that could be useful for everyone, feel free to make a PR.
 
 Keep reading if you wish things were even simpler. 
 
@@ -115,7 +115,7 @@ class ArticleView: View { // or ArticleViewController: ViewController
 }
 ```
 
-`View` is basically a UIView subclass with `subviewsLayout` property that we can override to provide our own layout. That is all there is to it. [Check it out](https://github.com/AbsurdAbstractions/Layoutless/blob/master/Sources/Views/View.swift).
+`View` is basically a UIView subclass with `subviewsLayout` property that we can override to provide our own layout. That is all there is to it. [Check it out](https://github.com/DeclarativeHub/Layoutless/blob/master/Sources/Views/View.swift).
 
 Layoutless provides base views like: `View`, `Control`, `Label`, `Button`, `ImageView`, `TextField`, etc.
 
@@ -169,7 +169,7 @@ class ArticleView: View {
 ### Carthage
 
 ```
-github "AbsurdAbstractions/Layoutless"
+github "DeclarativeHub/Layoutless"
 ```
 
 ### CocoaPods
