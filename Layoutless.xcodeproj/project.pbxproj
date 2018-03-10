@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		EC2870E2201E437E00702624 /* Layoutless.h in Headers */ = {isa = PBXBuildFile; fileRef = EC2870E0201E437E00702624 /* Layoutless.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EC2870EA201E43C900702624 /* Dimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2870E9201E43C900702624 /* Dimension.swift */; };
+		EC2870EA201E43C900702624 /* Length.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2870E9201E43C900702624 /* Length.swift */; };
 		EC2870EC201E444700702624 /* Anchorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2870EB201E444700702624 /* Anchorable.swift */; };
 		EC2870EE201E446900702624 /* LayoutProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2870ED201E446900702624 /* LayoutProtocol.swift */; };
 		EC2870F0201E448100702624 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2870EF201E448100702624 /* Layout.swift */; };
@@ -27,7 +27,7 @@
 		ECCF2DC320251A14008099DD /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF2DC220251A14008099DD /* Style.swift */; };
 		ECCF2DC92027014A008099DD /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF2DC82027014A008099DD /* TableViewCell.swift */; };
 		ECCF2E0D20274F0A008099DD /* Layoutless.h in Headers */ = {isa = PBXBuildFile; fileRef = EC2870E0201E437E00702624 /* Layoutless.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		ECCF2E0E20274F82008099DD /* Dimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2870E9201E43C900702624 /* Dimension.swift */; };
+		ECCF2E0E20274F82008099DD /* Length.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2870E9201E43C900702624 /* Length.swift */; };
 		ECCF2E0F20274F82008099DD /* Anchorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2870EB201E444700702624 /* Anchorable.swift */; };
 		ECCF2E1020274F82008099DD /* LayoutNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2870F3201E455A00702624 /* LayoutNode.swift */; };
 		ECCF2E1120274F82008099DD /* LayoutProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2870ED201E446900702624 /* LayoutProtocol.swift */; };
@@ -51,7 +51,7 @@
 		EC2870DD201E437E00702624 /* Layoutless.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Layoutless.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC2870E0201E437E00702624 /* Layoutless.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Layoutless.h; sourceTree = "<group>"; };
 		EC2870E1201E437E00702624 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EC2870E9201E43C900702624 /* Dimension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimension.swift; sourceTree = "<group>"; };
+		EC2870E9201E43C900702624 /* Length.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Length.swift; sourceTree = "<group>"; };
 		EC2870EB201E444700702624 /* Anchorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anchorable.swift; sourceTree = "<group>"; };
 		EC2870ED201E446900702624 /* LayoutProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutProtocol.swift; sourceTree = "<group>"; };
 		EC2870EF201E448100702624 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
@@ -133,7 +133,7 @@
 		ECCF2D822024B84B008099DD /* Layout */ = {
 			isa = PBXGroup;
 			children = (
-				EC2870E9201E43C900702624 /* Dimension.swift */,
+				EC2870E9201E43C900702624 /* Length.swift */,
 				EC2870EB201E444700702624 /* Anchorable.swift */,
 				EC2870F3201E455A00702624 /* LayoutNode.swift */,
 				EC2870ED201E446900702624 /* LayoutProtocol.swift */,
@@ -313,7 +313,7 @@
 				ECCF2DA02024C03A008099DD /* Control.swift in Sources */,
 				EC2870EC201E444700702624 /* Anchorable.swift in Sources */,
 				ECCF2CE420246CD9008099DD /* Layoutless.swift in Sources */,
-				EC2870EA201E43C900702624 /* Dimension.swift in Sources */,
+				EC2870EA201E43C900702624 /* Length.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,7 +323,7 @@
 			files = (
 				ECCF2E1C20274F88008099DD /* TableViewCell.swift in Sources */,
 				ECCF2E0F20274F82008099DD /* Anchorable.swift in Sources */,
-				ECCF2E0E20274F82008099DD /* Dimension.swift in Sources */,
+				ECCF2E0E20274F82008099DD /* Length.swift in Sources */,
 				ECCF2E1220274F82008099DD /* Layout.swift in Sources */,
 				ECCF2E1020274F82008099DD /* LayoutNode.swift in Sources */,
 				ECCF2E1820274F88008099DD /* Label.swift in Sources */,

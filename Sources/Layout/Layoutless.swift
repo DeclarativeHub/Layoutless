@@ -63,7 +63,7 @@ extension LayoutProtocol where LayoutNode: Anchorable {
 extension LayoutProtocol where LayoutNode: Anchorable {
 
     /// Constrain the node to the given width.
-    public func sizing(toWidth width: Dimension) -> Layout<LayoutNode> {
+    public func sizing(toWidth width: Length) -> Layout<LayoutNode> {
         return Layout {
             let node = self.makeLayoutNode()
             width.constrainToConstant(node.widthAnchor).isActive = true
@@ -72,7 +72,7 @@ extension LayoutProtocol where LayoutNode: Anchorable {
     }
 
     /// Constrain the node to the given height.
-    public func sizing(toHeight height: Dimension) -> Layout<LayoutNode> {
+    public func sizing(toHeight height: Length) -> Layout<LayoutNode> {
         return Layout {
             let node = self.makeLayoutNode()
             height.constrainToConstant(node.heightAnchor).isActive = true
@@ -81,7 +81,7 @@ extension LayoutProtocol where LayoutNode: Anchorable {
     }
 
     /// Constrain the node to the given width and height.
-    public func sizing(toWidth width: Dimension, height: Dimension) -> Layout<LayoutNode> {
+    public func sizing(toWidth width: Length, height: Length) -> Layout<LayoutNode> {
         return Layout {
             let node = self.makeLayoutNode()
             width.constrainToConstant(node.widthAnchor).isActive = true
@@ -92,13 +92,13 @@ extension LayoutProtocol where LayoutNode: Anchorable {
 
     /// Constrain the node width and/or height to node's parent width and/or heigh with an offset.
     /// Default offset is 0. Pass `nil` for a given dimension offset to not constrain that dimension.
-    public func sizingToParent(widthOffset: Dimension? = 0, heightOffset: Dimension? = 0) -> Layout<ChildNode<LayoutNode>> {
+    public func sizingToParent(widthOffset: Length? = 0, heightOffset: Length? = 0) -> Layout<ChildNode<LayoutNode>> {
         return sizingToParent(widthOffset: widthOffset, heightOffset: heightOffset, relativeToSafeArea: false)
     }
 
     /// Constrain the node width and/or height to node's parent width and/or heigh with an offset.
     /// Default offset is 0. Pass `nil` for a given dimension offset to not constrain that dimension.
-    public func sizingToParent(widthOffset: Dimension? = 0, heightOffset: Dimension? = 0, relativeToSafeArea: Bool) -> Layout<ChildNode<LayoutNode>> {
+    public func sizingToParent(widthOffset: Length? = 0, heightOffset: Length? = 0, relativeToSafeArea: Bool) -> Layout<ChildNode<LayoutNode>> {
         return layoutRelativeToParent(safeArea: relativeToSafeArea) { parent, node in
             if let widthOffset = widthOffset {
                 widthOffset.constrain(node.widthAnchor, to: parent.widthAnchor).isActive = true
@@ -148,22 +148,22 @@ extension LayoutProtocol where LayoutNode: Anchorable {
 extension LayoutProtocol where LayoutNode: Anchorable {
 
     /// Center the node vertically within the parent using the given y-offset. Default offset is 0.
-    public func centeringVerticallyInParent(offset: Dimension = 0, relativeToSafeArea: Bool = false) -> Layout<ChildNode<LayoutNode>> {
+    public func centeringVerticallyInParent(offset: Length = 0, relativeToSafeArea: Bool = false) -> Layout<ChildNode<LayoutNode>> {
         return centeringInParent(xOffset: nil, yOffset: offset, relativeToSafeArea: relativeToSafeArea)
     }
 
     /// Center the node horizontally within the parent using the given x-offset. Default offset is 0.
-    public func centeringHorizontallyInParent(offset: Dimension = 0, relativeToSafeArea: Bool = false) -> Layout<ChildNode<LayoutNode>> {
+    public func centeringHorizontallyInParent(offset: Length = 0, relativeToSafeArea: Bool = false) -> Layout<ChildNode<LayoutNode>> {
         return centeringInParent(xOffset: offset, yOffset: nil, relativeToSafeArea: relativeToSafeArea)
     }
 
     /// Center the node vertically and horizontally within the parent using the given x- and y- offsets. Default offsets are 0.
-    public func centeringInParent(xOffset: Dimension? = 0, yOffset: Dimension? = 0) -> Layout<ChildNode<LayoutNode>> {
+    public func centeringInParent(xOffset: Length? = 0, yOffset: Length? = 0) -> Layout<ChildNode<LayoutNode>> {
         return centeringInParent(xOffset: xOffset, yOffset: yOffset, relativeToSafeArea: false)
     }
 
     /// Center the node vertically and horizontally within the parent using the given x- and y- offsets. Default offsets are 0.
-    public func centeringInParent(xOffset: Dimension? = 0, yOffset: Dimension? = 0, relativeToSafeArea: Bool) -> Layout<ChildNode<LayoutNode>> {
+    public func centeringInParent(xOffset: Length? = 0, yOffset: Length? = 0, relativeToSafeArea: Bool) -> Layout<ChildNode<LayoutNode>> {
         return layoutRelativeToParent(safeArea: relativeToSafeArea) { parent, node in
             if let xOffset = xOffset {
                 xOffset.constrain(node.centerXAnchor, to: parent.centerXAnchor).isActive = true
@@ -190,22 +190,22 @@ extension LayoutProtocol where LayoutNode: Anchorable {
     }
 
     /// Constrain all four node's edges to the parent node's edges using the given insets. Default insets are 0.
-    public func fillingParent(insets: (left: Dimension, right: Dimension, top: Dimension, bottom: Dimension) = (0, 0, 0, 0)) -> Layout<ChildNode<LayoutNode>> {
+    public func fillingParent(insets: (left: Length, right: Length, top: Length, bottom: Length) = (0, 0, 0, 0)) -> Layout<ChildNode<LayoutNode>> {
         return stickingToParentEdges(left: insets.left, right: insets.right, top: insets.top, bottom: insets.bottom, relativeToSafeArea: false)
     }
 
     /// Constrain all four node's edges to the parent node's edges using the given insets. Default insets are 0.
-    public func fillingParent(insets: (left: Dimension, right: Dimension, top: Dimension, bottom: Dimension) = (0, 0, 0, 0), relativeToSafeArea: Bool) -> Layout<ChildNode<LayoutNode>> {
+    public func fillingParent(insets: (left: Length, right: Length, top: Length, bottom: Length) = (0, 0, 0, 0), relativeToSafeArea: Bool) -> Layout<ChildNode<LayoutNode>> {
         return stickingToParentEdges(left: insets.left, right: insets.right, top: insets.top, bottom: insets.bottom, relativeToSafeArea: relativeToSafeArea)
     }
 
     /// Constrain node's edges to the parent node's edges using the given insets. Only edges with non-nil insets will be constrained! Default insets are nil.
-    public func stickingToParentEdges(left: Dimension? = nil, right: Dimension? = nil, top: Dimension? = nil, bottom: Dimension? = nil) -> Layout<ChildNode<LayoutNode>> {
+    public func stickingToParentEdges(left: Length? = nil, right: Length? = nil, top: Length? = nil, bottom: Length? = nil) -> Layout<ChildNode<LayoutNode>> {
         return stickingToParentEdges(left: left, right: right, top: top, bottom: bottom, relativeToSafeArea: false)
     }
 
     /// Constrain node's edges to the parent node's edges using the given insets. Only edges with non-nil insets will be constrained! Default insets are nil.
-    public func stickingToParentEdges(left: Dimension? = nil, right: Dimension? = nil, top: Dimension? = nil, bottom: Dimension? = nil, relativeToSafeArea: Bool) -> Layout<ChildNode<LayoutNode>> {
+    public func stickingToParentEdges(left: Length? = nil, right: Length? = nil, top: Length? = nil, bottom: Length? = nil, relativeToSafeArea: Bool) -> Layout<ChildNode<LayoutNode>> {
         return layoutRelativeToParent(safeArea: relativeToSafeArea) { parent, node in
             if let left = left {
                 left.constrain(node.leftAnchor, to: parent.leftAnchor).isActive = true

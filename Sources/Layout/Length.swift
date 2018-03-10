@@ -24,9 +24,12 @@
 
 import UIKit
 
+@available(*, deprecated, renamed: "Length")
+public typealias Dimension = Length
+
 /// A type that represents a spatial dimension like width, height, inset, offset, etc.
 /// Expressible by float or integer literal.
-public enum Dimension: ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral {
+public enum Length: ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral {
 
     case exactly(CGFloat)
     case greaterThanOrEqualTo(CGFloat)
@@ -52,7 +55,7 @@ public enum Dimension: ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral {
     }
 }
 
-extension Dimension {
+extension Length {
 
     func constrain<Type>(_ lhs: NSLayoutAnchor<Type>, to rhs: NSLayoutAnchor<Type>) -> NSLayoutConstraint {
         switch self {
