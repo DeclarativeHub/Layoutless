@@ -372,33 +372,21 @@ extension LayoutProtocol where LayoutNode: UIView {
 // MARK: Spacing views
 
 /// An invisible dummy view constrained to the given height.
-public func verticalSpacing(_ height: CGFloat, required: Bool = true, priority: UILayoutPriority = .required) -> UIView {
+public func verticalSpacing(_ height: Length, priority: UILayoutPriority = .required) -> UIView {
     let view = UIView()
     view.translatesAutoresizingMaskIntoConstraints = false
-    if required {
-        let constraint = view.heightAnchor.constraint(equalToConstant: height)
-        constraint.priority = priority
-        constraint.isActive = true
-    } else {
-        let constraint = view.heightAnchor.constraint(lessThanOrEqualToConstant: height)
-        constraint.priority = priority
-        constraint.isActive = true
-    }
+    let constraint = height.constrainToConstant(view.heightAnchor)
+    constraint.priority = priority
+    constraint.isActive = true
     return view
 }
 
 /// An invisible dummy view constrained to the given width.
-public func horizontalSpacing(_ width: CGFloat, required: Bool = true, priority: UILayoutPriority = .required) -> UIView {
+public func horizontalSpacing(_ width: Length, priority: UILayoutPriority = .required) -> UIView {
     let view = UIView()
     view.translatesAutoresizingMaskIntoConstraints = false
-    if required {
-        let constraint = view.widthAnchor.constraint(equalToConstant: width)
-        constraint.priority = priority
-        constraint.isActive = true
-    } else {
-        let constraint = view.widthAnchor.constraint(lessThanOrEqualToConstant: width)
-        constraint.priority = priority
-        constraint.isActive = true
-    }
+    let constraint = width.constrainToConstant(view.widthAnchor)
+    constraint.priority = priority
+    constraint.isActive = true
     return view
 }
