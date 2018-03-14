@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => "https://github.com/DeclarativeHub/Layoutless.git", :tag => "0.1.2" }
 
   s.ios.deployment_target       = '9.3'
-  s.tvos.deployment_target      = '9.3'
+  s.tvos.deployment_target      = '11.0'
 
   s.source_files      = 'Sources/*/*.swift', 'Layoutless/*/*.{h,m}'
   s.requires_arc      = true
