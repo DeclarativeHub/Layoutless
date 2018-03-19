@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target       = '9.3'
   s.tvos.deployment_target      = '11.0'
 
-  s.source_files      = 'Sources/*/*.swift', 'Layoutless/*/*.{h,m}'
+  s.source_files      = 'Sources/**/*.swift', 'Layoutless/**/*.{h,m}'
   s.requires_arc      = true
   s.swift_version     = '4.0'
 end
