@@ -14,6 +14,8 @@
 		EC2870F0201E448100702624 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2870EF201E448100702624 /* Layout.swift */; };
 		EC2870F2201E44CE00702624 /* Layoutless+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2870F1201E44CE00702624 /* Layoutless+UIKit.swift */; };
 		EC2870F4201E455A00702624 /* LayoutNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2870F3201E455A00702624 /* LayoutNode.swift */; };
+		EC8287712099D56F00E371EC /* UIView+iOS10.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8287702099D56F00E371EC /* UIView+iOS10.swift */; };
+		EC8287722099D56F00E371EC /* UIView+iOS10.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8287702099D56F00E371EC /* UIView+iOS10.swift */; };
 		ECCF2CE420246CD9008099DD /* Layoutless.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF2CE320246CD9008099DD /* Layoutless.swift */; };
 		ECCF2CE620246DF0008099DD /* ChildNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF2CE520246DF0008099DD /* ChildNode.swift */; };
 		ECCF2D9D2024C03A008099DD /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF2D8D2024C03A008099DD /* Label.swift */; };
@@ -57,6 +59,7 @@
 		EC2870EF201E448100702624 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		EC2870F1201E44CE00702624 /* Layoutless+UIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Layoutless+UIKit.swift"; sourceTree = "<group>"; };
 		EC2870F3201E455A00702624 /* LayoutNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutNode.swift; sourceTree = "<group>"; };
+		EC8287702099D56F00E371EC /* UIView+iOS10.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+iOS10.swift"; sourceTree = "<group>"; };
 		ECCF2CE320246CD9008099DD /* Layoutless.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layoutless.swift; sourceTree = "<group>"; };
 		ECCF2CE520246DF0008099DD /* ChildNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildNode.swift; sourceTree = "<group>"; };
 		ECCF2D8D2024C03A008099DD /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
@@ -141,6 +144,7 @@
 				ECCF2CE520246DF0008099DD /* ChildNode.swift */,
 				ECCF2CE320246CD9008099DD /* Layoutless.swift */,
 				EC2870F1201E44CE00702624 /* Layoutless+UIKit.swift */,
+				EC8287702099D56F00E371EC /* UIView+iOS10.swift */,
 			);
 			path = Layout;
 			sourceTree = "<group>";
@@ -300,6 +304,7 @@
 				EC2870EE201E446900702624 /* LayoutProtocol.swift in Sources */,
 				ECCF2DA22024C03A008099DD /* TextField.swift in Sources */,
 				ECCF2DA32024C03A008099DD /* ImageView.swift in Sources */,
+				EC8287712099D56F00E371EC /* UIView+iOS10.swift in Sources */,
 				ECCF2D9D2024C03A008099DD /* Label.swift in Sources */,
 				EC2870F4201E455A00702624 /* LayoutNode.swift in Sources */,
 				ECCF2D9E2024C03A008099DD /* ViewController.swift in Sources */,
@@ -325,6 +330,7 @@
 				ECCF2E0F20274F82008099DD /* Anchorable.swift in Sources */,
 				ECCF2E0E20274F82008099DD /* Length.swift in Sources */,
 				ECCF2E1220274F82008099DD /* Layout.swift in Sources */,
+				EC8287722099D56F00E371EC /* UIView+iOS10.swift in Sources */,
 				ECCF2E1020274F82008099DD /* LayoutNode.swift in Sources */,
 				ECCF2E1820274F88008099DD /* Label.swift in Sources */,
 				ECCF2E1A20274F88008099DD /* TextField.swift in Sources */,

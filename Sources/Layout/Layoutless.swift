@@ -51,7 +51,7 @@ extension LayoutProtocol where LayoutNode: Anchorable {
                 if #available(iOS 11.0, *), safeArea {
                     layout(parent.safeAreaLayoutGuide, node)
                 } else {
-                    layout(parent, node)
+                    layout(parent.___safeAreaLayoutGuide, node)
                 }
             }
         }

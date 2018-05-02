@@ -60,4 +60,19 @@ open class View: UIView {
     open var subviewsLayout: AnyLayout {
         return EmptyLayout()
     }
+
+    open override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+
+        guard let superview = superview else { return }
+
+        if #available(iOS 11.0, *) {
+            // safeAreaLayoutGuide is already available
+        } else {
+            NSLayoutConstraint.activate([
+                ___safeAreaLayoutGuide.topAnchor.constraint(equalTo: superview.___safeAreaLayoutGuide.topAnchor),
+                ___safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: superview.___safeAreaLayoutGuide.bottomAnchor)
+            ])
+        }
+    }
 }
