@@ -48,10 +48,14 @@ extension LayoutProtocol where LayoutNode: Anchorable {
     public func layoutRelativeToParent(safeArea: Bool, layout: @escaping (Anchorable, LayoutNode) -> Void) -> Layout<ChildNode<LayoutNode>> {
         return Layout {
             return ChildNode(self.makeLayoutNode()) { parent, node in
-                if #available(iOS 11.0, *), safeArea {
-                    layout(parent.safeAreaLayoutGuide, node)
+                if safeArea {
+                    if #available(iOS 11.0, *) {
+                        layout(parent.safeAreaLayoutGuide, node)
+                    } else {
+                        layout(parent.___safeAreaLayoutGuide, node)
+                    }
                 } else {
-                    layout(parent.___safeAreaLayoutGuide, node)
+                    layout(parent, node)
                 }
             }
         }
