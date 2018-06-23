@@ -72,9 +72,30 @@ public class TraitQueryLayoutSet: LayoutNode {
 }
 
 /// Define a set of layouts based on trait queries.
-public func traitQueryLayoutSet(_ layouts: [TraitQuery: AnyLayout]) -> Layout<TraitQueryLayoutSet> {
+public func layoutSet(_ layouts: [TraitQuery: AnyLayout]) -> Layout<TraitQueryLayoutSet> {
     return Layout { revertable in
         return TraitQueryLayoutSet(layouts, revertable: revertable)
     }
 }
 
+public func layoutSet(_ layouts: (TraitQuery, AnyLayout)...) -> Layout<TraitQueryLayoutSet> {
+    return Layout { revertable in
+        return TraitQueryLayoutSet(Dictionary(layouts, uniquingKeysWith: { a, _ in a }), revertable: revertable)
+    }
+}
+
+public func traitQuery(width: Length, layout: @escaping () -> AnyLayout) -> (TraitQuery, AnyLayout) {
+    return (TraitQuery(width: width), layout())
+}
+
+public func traitQuery(height: Length, layout: @escaping () -> AnyLayout) -> (TraitQuery, AnyLayout) {
+    return (TraitQuery(height: height), layout())
+}
+
+public func traitQuery(width: Length, height: Length, layout: @escaping () -> AnyLayout) -> (TraitQuery, AnyLayout) {
+    return (TraitQuery(width: width, height: height), layout())
+}
+
+public func traitQuery(traitCollection: UITraitCollection, width: Length? = nil, height: Length? = nil, layout: @escaping () -> AnyLayout) -> (TraitQuery, AnyLayout) {
+    return (TraitQuery(traitCollection: traitCollection, width: width, height: height), layout())
+}

@@ -23,20 +23,22 @@ class ViewController: Layoutless.ViewController {
 
     override var subviewsLayout: AnyLayout {
 
-        let rectLayout = traitQueryLayoutSet([
-            TraitQuery(width: .greaterThanOrEqualTo(1001)):
-                rect.sizing(toWidth: 60).sizing(toHeight: 10),
-            TraitQuery(width: .lessThanOrEqualTo(1000)):
-                rect.sizing(toWidth: 30).sizing(toHeight: 20)
-        ])
+        let rectLayout = layoutSet(
+            traitQuery(width: .greaterThanOrEqualTo(1001)) {
+                self.rect.sizing(toWidth: 60).sizing(toHeight: 10)
+            },
+            traitQuery(width: .lessThanOrEqualTo(1000)) {
+                self.rect.sizing(toWidth: 30).sizing(toHeight: 20)
+            }
+        )
 
         let portrait = button.sizing(toWidth: 200).fillingParent(insets: 30).embedding(in: rect).centeringInParent()
         let landscape = stack(.horizontal)(button, rectLayout).centeringInParent()
 
-        return traitQueryLayoutSet([
-            TraitQuery(traitCollection: UITraitCollection(horizontalSizeClass: .compact)): portrait,
-            TraitQuery(traitCollection: UITraitCollection(horizontalSizeClass: .regular)): landscape
-        ])
+        return layoutSet(
+            traitQuery(traitCollection: UITraitCollection(horizontalSizeClass: .compact)) { portrait },
+            traitQuery(traitCollection: UITraitCollection(horizontalSizeClass: .regular)) { landscape }
+        )
     }
 }
 

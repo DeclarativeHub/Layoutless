@@ -47,6 +47,7 @@ extension UIView: LayoutProtocol {
 extension UIView: LayoutNode {
 
     /// Makes the receiver a subview of the container.
+    @discardableResult
     public func layout(in container: UIView) -> Revertable {
         let revertable = Revertable()
         translatesAutoresizingMaskIntoConstraints = false
