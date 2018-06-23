@@ -84,15 +84,15 @@ public func layoutSet(_ layouts: (TraitQuery, AnyLayout)...) -> Layout<TraitQuer
     }
 }
 
-public func traitQuery(width: Length, layout: @escaping () -> AnyLayout) -> (TraitQuery, AnyLayout) {
+public func traitQuery(width: Length, layout: () -> AnyLayout) -> (TraitQuery, AnyLayout) {
     return (TraitQuery(width: width), layout())
 }
 
-public func traitQuery(height: Length, layout: @escaping () -> AnyLayout) -> (TraitQuery, AnyLayout) {
+public func traitQuery(height: Length, layout: () -> AnyLayout) -> (TraitQuery, AnyLayout) {
     return (TraitQuery(height: height), layout())
 }
 
-public func traitQuery(width: Length, height: Length, layout: @escaping () -> AnyLayout) -> (TraitQuery, AnyLayout) {
+public func traitQuery(width: Length, height: Length, layout: () -> AnyLayout) -> (TraitQuery, AnyLayout) {
     return (TraitQuery(width: width, height: height), layout())
 }
 

@@ -25,10 +25,10 @@ class ViewController: Layoutless.ViewController {
 
         let rectLayout = layoutSet(
             traitQuery(width: .greaterThanOrEqualTo(1001)) {
-                self.rect.sizing(toWidth: 60).sizing(toHeight: 10)
+                rect.sizing(toWidth: 60).sizing(toHeight: 10)
             },
             traitQuery(width: .lessThanOrEqualTo(1000)) {
-                self.rect.sizing(toWidth: 30).sizing(toHeight: 20)
+                rect.sizing(toWidth: 30).sizing(toHeight: 20)
             }
         )
 
