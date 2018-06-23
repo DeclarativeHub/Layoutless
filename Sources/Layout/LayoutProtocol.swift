@@ -28,7 +28,7 @@ import Foundation
 public protocol AnyLayout: LayoutNode {
 
     /// Generates the layout and returns the layout's root node.
-    func makeAnyLayoutNode(_ compositeRevertable: ComposititeRevertable) -> LayoutNode
+    func makeAnyLayoutNode(_ compositeRevertable: Revertable) -> LayoutNode
 }
 
 /// A type that encapsulates layout, basically anything that can make a layout node.
@@ -36,57 +36,22 @@ public protocol LayoutProtocol: AnyLayout {
     associatedtype LayoutNode: Layoutless.LayoutNode
 
     /// Generates the layout and returns the layout's root node.
-    func makeLayoutNode(_ compositeRevertable: ComposititeRevertable) -> LayoutNode
+    func makeLayoutNode(_ compositeRevertable: Revertable) -> LayoutNode
 }
 
 extension LayoutProtocol {
 
-    public func makeAnyLayoutNode(_ compositeRevertable: ComposititeRevertable) -> Layoutless.LayoutNode {
+    public func makeAnyLayoutNode(_ compositeRevertable: Revertable) -> Layoutless.LayoutNode {
         return makeLayoutNode(compositeRevertable)
     }
 }
 
 extension AnyLayout {
 
-    public func layout(in container: UIView) -> ComposititeRevertable {
-        let revertable = ComposititeRevertable()
+    @discardableResult
+    public func layout(in container: UIView) -> Revertable {
+        let revertable = Revertable()
         revertable.append(makeAnyLayoutNode(revertable).layout(in: container))
         return revertable
-    }
-}
-
-public protocol Revertable {
-    func revert()
-}
-
-public class BlockRevertable: Revertable {
-
-    private let block: () -> Void
-
-    init(_ block: @escaping () -> Void) {
-        self.block = block
-    }
-
-    public func revert() {
-        block()
-    }
-}
-
-public class ComposititeRevertable: Revertable {
-
-    private var revertables: [Revertable] = []
-
-    public init() {}
-
-    public func revert() {
-        revertables.forEach { $0.revert() }
-    }
-
-    public func append(_ revertable: Revertable) {
-        revertables.append(revertable)
-    }
-
-    public func appendBlock(_ block: @escaping () -> Void) {
-        revertables.append(BlockRevertable(block))
     }
 }

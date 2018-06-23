@@ -22,18 +22,21 @@ class ViewController: Layoutless.ViewController {
     }
 
     override var subviewsLayout: AnyLayout {
-        let portrait = button.sizing(toWidth: 200).fillingParent(insets: 30).embedding(in: rect).centeringInParent()
-        let landscape = stack(.horizontal)(button, rect.sizing(toWidth: 30).sizing(toHeight: 20)).centeringInParent()
 
-        return traitCollectionLayoutSet([
-            UITraitCollection(verticalSizeClass: .regular): portrait,
-            UITraitCollection(verticalSizeClass: .compact): landscape
+        let rectLayout = traitQueryLayoutSet([
+            TraitQuery(width: .greaterThanOrEqualTo(1001)):
+                rect.sizing(toWidth: 60).sizing(toHeight: 10),
+            TraitQuery(width: .lessThanOrEqualTo(1000)):
+                rect.sizing(toWidth: 30).sizing(toHeight: 20)
         ])
-    }
 
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        NotificationCenter.default.post(name: .didChangeWindowTraitCollection, object: nil)
-        print("did change to",  traitCollection)
+        let portrait = button.sizing(toWidth: 200).fillingParent(insets: 30).embedding(in: rect).centeringInParent()
+        let landscape = stack(.horizontal)(button, rectLayout).centeringInParent()
+
+        return traitQueryLayoutSet([
+            TraitQuery(traitCollection: UITraitCollection(horizontalSizeClass: .compact)): portrait,
+            TraitQuery(traitCollection: UITraitCollection(horizontalSizeClass: .regular)): landscape
+        ])
     }
 }
 

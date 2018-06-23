@@ -29,7 +29,7 @@ public typealias Dimension = Length
 
 /// A type that represents a spatial dimension like width, height, inset, offset, etc.
 /// Expressible by float or integer literal.
-public enum Length: ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral {
+public enum Length: Hashable, ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral {
 
     case exactly(CGFloat)
     case greaterThanOrEqualTo(CGFloat)
@@ -76,6 +76,20 @@ extension Length {
             return lhs.constraint(lessThanOrEqualToConstant: CGFloat(value))
         case .greaterThanOrEqualTo(let value):
             return lhs.constraint(greaterThanOrEqualToConstant: CGFloat(value))
+        }
+    }
+}
+
+extension Length {
+
+    public func satisfies(_ otherValue: CGFloat) -> Bool {
+        switch self {
+        case .exactly(let value):
+            return otherValue == value
+        case .greaterThanOrEqualTo(let value):
+            return otherValue >= value
+        case .lessThanOrEqualTo(let value):
+            return otherValue <= value
         }
     }
 }

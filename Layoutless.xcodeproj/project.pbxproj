@@ -16,6 +16,14 @@
 		EC2870F4201E455A00702624 /* LayoutNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2870F3201E455A00702624 /* LayoutNode.swift */; };
 		EC8287712099D56F00E371EC /* UIView+iOS10.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8287702099D56F00E371EC /* UIView+iOS10.swift */; };
 		EC8287722099D56F00E371EC /* UIView+iOS10.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8287702099D56F00E371EC /* UIView+iOS10.swift */; };
+		ECC45DDA20DE7C6A00E13399 /* Revertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC45DD920DE7C6A00E13399 /* Revertable.swift */; };
+		ECC45DDB20DE7C6A00E13399 /* Revertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC45DD920DE7C6A00E13399 /* Revertable.swift */; };
+		ECC45DDD20DE7CB300E13399 /* WindowTraitCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC45DDC20DE7CB300E13399 /* WindowTraitCollection.swift */; };
+		ECC45DDE20DE7CB300E13399 /* WindowTraitCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC45DDC20DE7CB300E13399 /* WindowTraitCollection.swift */; };
+		ECC45DE020DE7F4D00E13399 /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC45DDF20DE7F4D00E13399 /* Window.swift */; };
+		ECC45DE120DE7F4D00E13399 /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC45DDF20DE7F4D00E13399 /* Window.swift */; };
+		ECC45DE320DEAD1100E13399 /* TraitQueryLayoutSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC45DE220DEAD1100E13399 /* TraitQueryLayoutSet.swift */; };
+		ECC45DE420DEAD1100E13399 /* TraitQueryLayoutSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC45DE220DEAD1100E13399 /* TraitQueryLayoutSet.swift */; };
 		ECCF2CE420246CD9008099DD /* Layoutless.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF2CE320246CD9008099DD /* Layoutless.swift */; };
 		ECCF2CE620246DF0008099DD /* ChildNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF2CE520246DF0008099DD /* ChildNode.swift */; };
 		ECCF2D9D2024C03A008099DD /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF2D8D2024C03A008099DD /* Label.swift */; };
@@ -60,6 +68,10 @@
 		EC2870F1201E44CE00702624 /* Layoutless+UIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Layoutless+UIKit.swift"; sourceTree = "<group>"; };
 		EC2870F3201E455A00702624 /* LayoutNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutNode.swift; sourceTree = "<group>"; };
 		EC8287702099D56F00E371EC /* UIView+iOS10.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+iOS10.swift"; sourceTree = "<group>"; };
+		ECC45DD920DE7C6A00E13399 /* Revertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Revertable.swift; sourceTree = "<group>"; };
+		ECC45DDC20DE7CB300E13399 /* WindowTraitCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowTraitCollection.swift; sourceTree = "<group>"; };
+		ECC45DDF20DE7F4D00E13399 /* Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
+		ECC45DE220DEAD1100E13399 /* TraitQueryLayoutSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraitQueryLayoutSet.swift; sourceTree = "<group>"; };
 		ECCF2CE320246CD9008099DD /* Layoutless.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layoutless.swift; sourceTree = "<group>"; };
 		ECCF2CE520246DF0008099DD /* ChildNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildNode.swift; sourceTree = "<group>"; };
 		ECCF2D8D2024C03A008099DD /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
@@ -142,8 +154,11 @@
 				EC2870ED201E446900702624 /* LayoutProtocol.swift */,
 				EC2870EF201E448100702624 /* Layout.swift */,
 				ECCF2CE520246DF0008099DD /* ChildNode.swift */,
+				ECC45DE220DEAD1100E13399 /* TraitQueryLayoutSet.swift */,
 				ECCF2CE320246CD9008099DD /* Layoutless.swift */,
 				EC2870F1201E44CE00702624 /* Layoutless+UIKit.swift */,
+				ECC45DD920DE7C6A00E13399 /* Revertable.swift */,
+				ECC45DDC20DE7CB300E13399 /* WindowTraitCollection.swift */,
 				EC8287702099D56F00E371EC /* UIView+iOS10.swift */,
 			);
 			path = Layout;
@@ -161,6 +176,7 @@
 				ECCF2DC82027014A008099DD /* TableViewCell.swift */,
 				ECCF2D912024C03A008099DD /* CollectionViewCell.swift */,
 				ECCF2D8E2024C03A008099DD /* ViewController.swift */,
+				ECC45DDF20DE7F4D00E13399 /* Window.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -302,6 +318,7 @@
 			files = (
 				EC2870F2201E44CE00702624 /* Layoutless+UIKit.swift in Sources */,
 				EC2870EE201E446900702624 /* LayoutProtocol.swift in Sources */,
+				ECC45DDD20DE7CB300E13399 /* WindowTraitCollection.swift in Sources */,
 				ECCF2DA22024C03A008099DD /* TextField.swift in Sources */,
 				ECCF2DA32024C03A008099DD /* ImageView.swift in Sources */,
 				EC8287712099D56F00E371EC /* UIView+iOS10.swift in Sources */,
@@ -315,10 +332,13 @@
 				ECCF2D9F2024C03A008099DD /* View.swift in Sources */,
 				ECCF2DC320251A14008099DD /* Style.swift in Sources */,
 				ECCF2DA52024C03A008099DD /* Button.swift in Sources */,
+				ECC45DDA20DE7C6A00E13399 /* Revertable.swift in Sources */,
 				ECCF2DA02024C03A008099DD /* Control.swift in Sources */,
 				EC2870EC201E444700702624 /* Anchorable.swift in Sources */,
 				ECCF2CE420246CD9008099DD /* Layoutless.swift in Sources */,
+				ECC45DE320DEAD1100E13399 /* TraitQueryLayoutSet.swift in Sources */,
 				EC2870EA201E43C900702624 /* Length.swift in Sources */,
+				ECC45DE020DE7F4D00E13399 /* Window.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,6 +348,7 @@
 			files = (
 				ECCF2E1C20274F88008099DD /* TableViewCell.swift in Sources */,
 				ECCF2E0F20274F82008099DD /* Anchorable.swift in Sources */,
+				ECC45DDE20DE7CB300E13399 /* WindowTraitCollection.swift in Sources */,
 				ECCF2E0E20274F82008099DD /* Length.swift in Sources */,
 				ECCF2E1220274F82008099DD /* Layout.swift in Sources */,
 				EC8287722099D56F00E371EC /* UIView+iOS10.swift in Sources */,
@@ -341,10 +362,13 @@
 				ECCF2E1920274F88008099DD /* Button.swift in Sources */,
 				ECCF2E1D20274F88008099DD /* CollectionViewCell.swift in Sources */,
 				ECCF2E1420274F82008099DD /* Layoutless.swift in Sources */,
+				ECC45DDB20DE7C6A00E13399 /* Revertable.swift in Sources */,
 				ECCF2E1720274F88008099DD /* Control.swift in Sources */,
 				ECCF2E1120274F82008099DD /* LayoutProtocol.swift in Sources */,
 				ECCF2E1B20274F88008099DD /* ImageView.swift in Sources */,
+				ECC45DE420DEAD1100E13399 /* TraitQueryLayoutSet.swift in Sources */,
 				ECCF2E1520274F82008099DD /* Layoutless+UIKit.swift in Sources */,
+				ECC45DE120DE7F4D00E13399 /* Window.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

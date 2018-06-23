@@ -27,9 +27,9 @@
 public class ChildNode<LayoutNode: Layoutless.LayoutNode>: Layoutless.LayoutNode, Anchorable where LayoutNode: Anchorable {
 
     public let child: LayoutNode
-    public let layout: (UIView) -> ComposititeRevertable
+    public let layout: (UIView) -> Revertable
 
-    public init(_ child: LayoutNode, layout: @escaping (UIView, LayoutNode, ComposititeRevertable) -> Void) {
+    public init(_ child: LayoutNode, layout: @escaping (UIView, LayoutNode, Revertable) -> Void) {
         self.child = child
         self.layout = { container in
             let revertable = child.layout(in: container)
@@ -38,7 +38,7 @@ public class ChildNode<LayoutNode: Layoutless.LayoutNode>: Layoutless.LayoutNode
         }
     }
 
-    public func layout(in container: UIView) -> ComposititeRevertable {
+    public func layout(in container: UIView) -> Revertable {
         return layout(container)
     }
 

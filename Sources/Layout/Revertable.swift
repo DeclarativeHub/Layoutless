@@ -22,31 +22,40 @@
 //  THE SOFTWARE.
 //
 
-/// A type that represents layout calculation as a closure.
-public struct Layout<LayoutNode: Layoutless.LayoutNode>: LayoutProtocol {
+import Foundation
 
-    private let _generate: (Revertable) -> LayoutNode
-
-    public init(_ generate: @escaping (Revertable) -> LayoutNode) {
-        _generate = generate
-    }
-
-    public static func just(_ node: LayoutNode) -> Layout<LayoutNode> {
-        return Layout { _ in node }
-    }
-
-    public func makeLayoutNode(_ compositeRevertable: Revertable) -> LayoutNode {
-        return _generate(compositeRevertable)
-    }
+public protocol AnyRevertable {
+    func revert()
 }
 
-/// A layout of nothing.
-public func EmptyLayout() -> Layout<EmptyLayoutNode> {
-    return Layout.just(EmptyLayoutNode())
-}
+public class Revertable: AnyRevertable {
 
-/// A node that does not have any content.
-public struct EmptyLayoutNode: LayoutNode {
+    private var revertables: [AnyRevertable] = []
+
     public init() {}
-    public func layout(in container: UIView) -> Revertable { return Revertable() }
+
+    public func revert() {
+        revertables.forEach { $0.revert() }
+    }
+
+    public func append(_ revertable: AnyRevertable) {
+        revertables.append(revertable)
+    }
+
+    public func appendBlock(_ block: @escaping () -> Void) {
+        revertables.append(BlockRevertable(block))
+    }
+}
+
+public class BlockRevertable: AnyRevertable {
+
+    private let block: () -> Void
+
+    init(_ block: @escaping () -> Void) {
+        self.block = block
+    }
+
+    public func revert() {
+        block()
+    }
 }

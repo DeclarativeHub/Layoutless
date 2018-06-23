@@ -23,6 +23,7 @@
 //
 
 import UIKit
+import ObjectiveC
 
 // MARK: Hiererchy based layout
 
@@ -38,14 +39,14 @@ extension LayoutProtocol where LayoutNode: Anchorable {
     }
 
     /// Provides a way to layout a node with respect to the node's eventual parent node.
-    public func layoutRelativeToParent(_ layout: @escaping (Anchorable, LayoutNode, ComposititeRevertable) -> Void) -> Layout<ChildNode<LayoutNode>> {
+    public func layoutRelativeToParent(_ layout: @escaping (Anchorable, LayoutNode, Revertable) -> Void) -> Layout<ChildNode<LayoutNode>> {
         return Layout { revertable in
             return ChildNode(self.makeLayoutNode(revertable), layout: layout)
         }
     }
 
     /// Provides a way to layout a node with respect to the node's eventual parent node or its safe area.
-    public func layoutRelativeToParent(safeArea: Bool, layout: @escaping (Anchorable, LayoutNode, ComposititeRevertable) -> Void) -> Layout<ChildNode<LayoutNode>> {
+    public func layoutRelativeToParent(safeArea: Bool, layout: @escaping (Anchorable, LayoutNode, Revertable) -> Void) -> Layout<ChildNode<LayoutNode>> {
         return Layout { parentRevertable in
             return ChildNode(self.makeLayoutNode(parentRevertable)) { parent, node, revertable in
                 parentRevertable.append(revertable)
@@ -392,8 +393,8 @@ public class LayoutGroup: LayoutNode {
         self.layouts = layouts
     }
 
-    public func layout(in container: UIView) -> ComposititeRevertable {
-        let revertable = ComposititeRevertable()
+    public func layout(in container: UIView) -> Revertable {
+        let revertable = Revertable()
         layouts.forEach { revertable.append($0.layout(in: container)) }
         return revertable
     }
@@ -439,61 +440,6 @@ extension LayoutProtocol where LayoutNode: UIView {
             }
             return node
         }
-    }
-}
-
-extension Notification.Name {
-    public static let didChangeWindowTraitCollection = Notification.Name("dctc")
-}
-
-public class TraitCollectionLayoutSet: LayoutNode {
-
-    public let layouts: [UITraitCollection: AnyLayout]
-    private weak var container: UIView?
-    private var revertable: Revertable?
-    private var previousLayout: UITraitCollection?
-    private var cyctle: Any?
-
-    public init(_ layouts: [UITraitCollection: AnyLayout]) {
-        self.layouts = layouts
-        cyctle = self
-    }
-
-    public func layout(in container: UIView) -> ComposititeRevertable {
-        self.container = container
-        updateLayout()
-        NotificationCenter.default.addObserver(self, selector: #selector(didChangeTraitCollection), name: .didChangeWindowTraitCollection, object: nil)
-        let compositeRevertable = ComposititeRevertable()
-        compositeRevertable.appendBlock {
-            self.revertable?.revert()
-            NotificationCenter.default.removeObserver(self)
-        }
-        return compositeRevertable
-    }
-
-    deinit {
-        print("ode")
-    }
-
-    @objc func didChangeTraitCollection() {
-        updateLayout()
-    }
-
-    private func updateLayout() {
-        guard let container = container else { return }
-        if let layout = layouts.first(where: { container.traitCollection.containsTraits(in: $0.key) }) {
-            guard previousLayout != layout.key else { return }
-            previousLayout = layout.key
-            revertable?.revert()
-            revertable = layout.value.layout(in: container)
-        }
-    }
-}
-
-/// Group an array of layouts that should be laid out in the same container.
-public func traitCollectionLayoutSet(_ layouts: [UITraitCollection: AnyLayout]) -> Layout<TraitCollectionLayoutSet> {
-    return Layout { revertable in
-        return TraitCollectionLayoutSet(layouts)
     }
 }
 

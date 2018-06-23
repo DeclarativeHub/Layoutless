@@ -39,7 +39,7 @@ extension UILayoutGuide: Anchorable {
 extension UIView: LayoutProtocol {
 
     /// UIView's layout node is the view itself. Returns `self`.
-    public func makeLayoutNode(_ compositeRevertable: ComposititeRevertable) -> UIView {
+    public func makeLayoutNode(_ compositeRevertable: Revertable) -> UIView {
         return self
     }
 }
@@ -47,8 +47,8 @@ extension UIView: LayoutProtocol {
 extension UIView: LayoutNode {
 
     /// Makes the receiver a subview of the container.
-    public func layout(in container: UIView) -> ComposititeRevertable {
-        let revertable = ComposititeRevertable()
+    public func layout(in container: UIView) -> Revertable {
+        let revertable = Revertable()
         translatesAutoresizingMaskIntoConstraints = false
         if let container = container as? UIStackView {
             container.addArrangedSubview(self)

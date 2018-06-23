@@ -30,5 +30,5 @@ public protocol LayoutNode {
 
     /// Layouts the receiver within the container.
     @discardableResult
-    func layout(in container: UIView) -> ComposititeRevertable
+    func layout(in container: UIView) -> Revertable
 }
