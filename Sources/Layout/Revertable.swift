@@ -36,6 +36,7 @@ public class Revertable: AnyRevertable {
 
     public func revert() {
         revertables.forEach { $0.revert() }
+        revertables = []
     }
 
     public func append(_ revertable: AnyRevertable) {
@@ -49,13 +50,14 @@ public class Revertable: AnyRevertable {
 
 public class BlockRevertable: AnyRevertable {
 
-    private let block: () -> Void
+    private var block: (() -> Void)?
 
     init(_ block: @escaping () -> Void) {
         self.block = block
     }
 
     public func revert() {
-        block()
+        block?()
+        block = nil
     }
 }

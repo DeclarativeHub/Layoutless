@@ -35,7 +35,7 @@ public struct Layout<LayoutNode: Layoutless.LayoutNode>: LayoutProtocol {
         return Layout { _ in node }
     }
 
-    public func makeLayoutNode(_ compositeRevertable: Revertable) -> LayoutNode {
+    public func makeLayoutNode(_ compositeRevertable: Revertable = Revertable()) -> LayoutNode {
         return _generate(compositeRevertable)
     }
 }
