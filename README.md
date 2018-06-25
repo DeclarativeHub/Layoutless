@@ -168,7 +168,7 @@ Universal apps usually provide different layouts based on the screen size. An ap
 Layoutless makes all that easy. All you need to do is define different layouts based on the set of traits and let the framework handle everything else, from choosing the appropriate layout to dynamically changing the layout when the set of traits changes.
 Just define layouts as you normally would and then use `layoutSet` to build the final layout (or just part of the layout) that is conditional based on the trait currently active. For example, to provide one layout for portrait and other for landscape one could do:
 
-```
+```swift
 class MyViewController: ViewController {
 
     override var subviewsLayout: AnyLayout {
@@ -186,7 +186,7 @@ class MyViewController: ViewController {
 
 As we can see, within `layoutSet` we list a number of queries. Each query represents a layout that is going to be active when the trait query matches current traits. We can query by `UITraitCollection` or by screen size. For example:
 
-```
+```swift
 layoutSet(
     traitQuery(width: .lessThanOrEqual(1000)) { ... },
     traitQuery(width: .greaterThanOrEqual(1000)) { ... }
