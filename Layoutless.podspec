@@ -13,5 +13,5 @@ Pod::Spec.new do |s|
 
   s.source_files      = 'Sources/**/*.swift', 'Layoutless/**/*.{h,m}'
   s.requires_arc      = true
-  s.swift_version     = '4.1'
+  s.swift_version     = '4.0'
 end
