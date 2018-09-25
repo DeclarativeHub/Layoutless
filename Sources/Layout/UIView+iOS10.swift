@@ -12,6 +12,7 @@ extension UIView {
 
     private struct AssociatedKeys {
         static var safeAreaLayoutGuide = "safeAreaLayoutGuide"
+        static var associatedObjects = "associatedObjects"
     }
 
     internal var ___safeAreaLayoutGuide: UILayoutGuide {
@@ -29,6 +30,22 @@ extension UIView {
                 objc_setAssociatedObject(self, &AssociatedKeys.safeAreaLayoutGuide, layoutGuide, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
                 return layoutGuide
             }
+        }
+    }
+
+    internal var ___associatedObjects: [AnyObject] {
+        get {
+            let associatedObjects = objc_getAssociatedObject(self, &AssociatedKeys.associatedObjects) as? [AnyObject]
+            if let associatedObjects = associatedObjects {
+                return associatedObjects
+            } else {
+                let associatedObjects = [AnyObject]()
+                objc_setAssociatedObject(self, &AssociatedKeys.associatedObjects, associatedObjects, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+                return associatedObjects
+            }
+        }
+        set {
+            objc_setAssociatedObject(self, &AssociatedKeys.associatedObjects, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
 }

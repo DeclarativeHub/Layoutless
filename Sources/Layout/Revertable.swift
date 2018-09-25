@@ -22,43 +22,42 @@
 //  THE SOFTWARE.
 //
 
-import UIKit
+import Foundation
 
-// MARK: Protocol conformances
-
-extension UIView: Anchorable {
-
-    // Conforms automatically
+public protocol AnyRevertable {
+    func revert()
 }
 
-extension UILayoutGuide: Anchorable {
+public class Revertable: AnyRevertable {
 
-    // Conforms automatically
-}
+    private var revertables: [AnyRevertable] = []
 
-extension UIView: LayoutProtocol {
+    public init() {}
 
-    /// UIView's layout node is the view itself. Returns `self`.
-    public func makeLayoutNode(_ compositeRevertable: Revertable) -> UIView {
-        return self
+    public func revert() {
+        revertables.forEach { $0.revert() }
+        revertables = []
+    }
+
+    public func append(_ revertable: AnyRevertable) {
+        revertables.append(revertable)
+    }
+
+    public func appendBlock(_ block: @escaping () -> Void) {
+        revertables.append(BlockRevertable(block))
     }
 }
 
-extension UIView: LayoutNode {
+public class BlockRevertable: AnyRevertable {
 
-    /// Makes the receiver a subview of the container.
-    @discardableResult
-    public func layout(in container: UIView) -> Revertable {
-        let revertable = Revertable()
-        translatesAutoresizingMaskIntoConstraints = false
-        if let container = container as? UIStackView {
-            container.addArrangedSubview(self)
-        } else {
-            container.addSubview(self)
-        }
-        revertable.appendBlock {
-            self.removeFromSuperview()
-        }
-        return revertable
+    private var block: (() -> Void)?
+
+    init(_ block: @escaping () -> Void) {
+        self.block = block
+    }
+
+    public func revert() {
+        block?()
+        block = nil
     }
 }

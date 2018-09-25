@@ -29,5 +29,6 @@ import UIKit
 public protocol LayoutNode {
 
     /// Layouts the receiver within the container.
-    func layout(in container: UIView)
+    @discardableResult
+    func layout(in container: UIView) -> Revertable
 }

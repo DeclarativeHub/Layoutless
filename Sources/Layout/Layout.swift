@@ -25,18 +25,18 @@
 /// A type that represents layout calculation as a closure.
 public struct Layout<LayoutNode: Layoutless.LayoutNode>: LayoutProtocol {
 
-    private let _generate: () -> LayoutNode
+    private let _generate: (Revertable) -> LayoutNode
 
-    public init(_ generate: @escaping () -> LayoutNode) {
+    public init(_ generate: @escaping (Revertable) -> LayoutNode) {
         _generate = generate
     }
 
     public static func just(_ node: LayoutNode) -> Layout<LayoutNode> {
-        return Layout { node }
+        return Layout { _ in node }
     }
 
-    public func makeLayoutNode() -> LayoutNode {
-        return _generate()
+    public func makeLayoutNode(_ compositeRevertable: Revertable = Revertable()) -> LayoutNode {
+        return _generate(compositeRevertable)
     }
 }
 
@@ -48,5 +48,5 @@ public func EmptyLayout() -> Layout<EmptyLayoutNode> {
 /// A node that does not have any content.
 public struct EmptyLayoutNode: LayoutNode {
     public init() {}
-    public func layout(in container: UIView) {}
+    public func layout(in container: UIView) -> Revertable { return Revertable() }
 }

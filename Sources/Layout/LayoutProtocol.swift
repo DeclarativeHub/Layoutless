@@ -28,7 +28,7 @@ import Foundation
 public protocol AnyLayout: LayoutNode {
 
     /// Generates the layout and returns the layout's root node.
-    func makeAnyLayoutNode() -> LayoutNode
+    func makeAnyLayoutNode(_ compositeRevertable: Revertable) -> LayoutNode
 }
 
 /// A type that encapsulates layout, basically anything that can make a layout node.
@@ -36,19 +36,22 @@ public protocol LayoutProtocol: AnyLayout {
     associatedtype LayoutNode: Layoutless.LayoutNode
 
     /// Generates the layout and returns the layout's root node.
-    func makeLayoutNode() -> LayoutNode
+    func makeLayoutNode(_ compositeRevertable: Revertable) -> LayoutNode
 }
 
 extension LayoutProtocol {
 
-    public func makeAnyLayoutNode() -> Layoutless.LayoutNode {
-        return makeLayoutNode()
+    public func makeAnyLayoutNode(_ compositeRevertable: Revertable) -> Layoutless.LayoutNode {
+        return makeLayoutNode(compositeRevertable)
     }
 }
 
 extension AnyLayout {
 
-    public func layout(in container: UIView) {
-        makeAnyLayoutNode().layout(in: container)
+    @discardableResult
+    public func layout(in container: UIView) -> Revertable {
+        let revertable = Revertable()
+        revertable.append(makeAnyLayoutNode(revertable).layout(in: container))
+        return revertable
     }
 }

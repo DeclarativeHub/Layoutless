@@ -159,6 +159,44 @@ class ArticleView: View {
 
 😍
 
+## Advanced 
+
+### Layout Sets
+
+Universal apps usually provide different layouts based on the screen size. An app that supports both iPhone orientations and an iPad could provide for example three different layouts for some or all of its screens. An iPad app will usually provide one layout in fullscreen mode and another in split screen mode. Most of these scenarios require screens to dynamically update layout as the user interacts with the app or device (for example rotates it). In real life that means maintaining different sets of constraints and activating or deactivating them as needed. 
+
+Layoutless makes all that easy. All you need to do is define different layouts based on the set of traits and let the framework handle everything else, from choosing the appropriate layout to dynamically changing the layout when the set of traits changes.
+Just define layouts as you normally would and then use `layoutSet` to build the final layout (or just part of the layout) that is conditional based on the trait currently active. For example, to provide one layout for portrait and other for landscape one could do:
+
+```swift
+class MyViewController: ViewController {
+
+    override var subviewsLayout: AnyLayout {
+
+        let portrait: AnyLayout = ...
+        let landscape: AnyLayout = ...
+
+        return layoutSet(
+            traitQuery(traitCollection: UITraitCollection(horizontalSizeClass: .compact)) { portrait },
+            traitQuery(traitCollection: UITraitCollection(horizontalSizeClass: .regular)) { landscape }
+        )
+    }
+}
+```
+
+As we can see, within `layoutSet` we list a number of queries. Each query represents a layout that is going to be active when the trait query matches current traits. We can query by `UITraitCollection` or by screen size. For example:
+
+```swift
+layoutSet(
+    traitQuery(width: .lessThanOrEqual(1000)) { ... },
+    traitQuery(width: .greaterThanOrEqual(1000)) { ... }
+)
+```
+
+Query trait sets should be disjunct sets. 
+
+Note that app's key window must be Layoutless `Window` or its subclass for the dynamic layout change to work.
+
 ## Requirements
 
 * iOS 9.0+ / tvOS 9.0+
