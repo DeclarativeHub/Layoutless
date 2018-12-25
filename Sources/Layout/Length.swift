@@ -57,7 +57,7 @@ public enum Length: Hashable, ExpressibleByFloatLiteral, ExpressibleByIntegerLit
 
 extension Length {
 
-    func constrain<Type>(_ lhs: NSLayoutAnchor<Type>, to rhs: NSLayoutAnchor<Type>) -> NSLayoutConstraint {
+    public func constrain<Type>(_ lhs: NSLayoutAnchor<Type>, to rhs: NSLayoutAnchor<Type>) -> NSLayoutConstraint {
         switch self {
         case .exactly(let value):
             return lhs.constraint(equalTo: rhs, constant: CGFloat(value))
@@ -68,7 +68,7 @@ extension Length {
         }
     }
 
-    func constrainToConstant(_ lhs: NSLayoutDimension) -> NSLayoutConstraint {
+    public func constrainToConstant(_ lhs: NSLayoutDimension) -> NSLayoutConstraint {
         switch self {
         case .exactly(let value):
             return lhs.constraint(equalToConstant: CGFloat(value))
