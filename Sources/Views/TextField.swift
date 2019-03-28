@@ -60,11 +60,11 @@ open class TextField: UITextField {
     }
 
     open override func editingRect(forBounds bounds: CGRect) -> CGRect {
-        return UIEdgeInsetsInsetRect(super.editingRect(forBounds: bounds), textInsets)
+        return super.editingRect(forBounds: bounds).inset(by: textInsets)
     }
 
     open override func textRect(forBounds bounds: CGRect) -> CGRect {
-        return UIEdgeInsetsInsetRect(super.textRect(forBounds: bounds), textInsets)
+        return super.textRect(forBounds: bounds).inset(by: textInsets)
     }
 
     open func setup() {

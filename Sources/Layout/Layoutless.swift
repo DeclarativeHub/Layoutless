@@ -299,7 +299,7 @@ extension LayoutProtocol where LayoutNode: Anchorable {
     }
 
     /// Embed the node in a custom scroll view that should scroll in the given direction. Optionally pass in the closure to setup the scroll view.
-    public func scrolling<ScrollView: UIScrollView>(scrollViewType: ScrollView.Type, direction: UILayoutConstraintAxis, configure: @escaping (UIScrollView) -> Void = { _ in }) -> Layout<ChildNode<ScrollView>> {
+    public func scrolling<ScrollView: UIScrollView>(scrollViewType: ScrollView.Type, direction: NSLayoutConstraint.Axis, configure: @escaping (UIScrollView) -> Void = { _ in }) -> Layout<ChildNode<ScrollView>> {
         switch direction {
         case .vertical:
             return scrolling(
@@ -313,11 +313,13 @@ extension LayoutProtocol where LayoutNode: Anchorable {
                 layoutToScrollViewParent: { $0.stickingToParentEdges(top: 0, bottom: 0) },
                 configure: configure
             )
+        @unknown default:
+            fatalError("Layoutless supports only vertical or horizontal scrolling.")
         }
     }
 
     /// Embed the node in a scroll view that should scroll in the given direction. Optionally pass in the closure to setup the scroll view.
-    public func scrolling(_ direction: UILayoutConstraintAxis, configure: @escaping (UIScrollView) -> Void = { _ in }) -> Layout<ChildNode<UIScrollView>> {
+    public func scrolling(_ direction: NSLayoutConstraint.Axis, configure: @escaping (UIScrollView) -> Void = { _ in }) -> Layout<ChildNode<UIScrollView>> {
         return scrolling(scrollViewType: UIScrollView.self, direction: direction, configure: configure)
     }
 }
@@ -364,7 +366,7 @@ extension LayoutProtocol where LayoutNode: UIView {
 // MARK: Stacking
 
 /// Stack an array of views in a stack view.
-public func stack(_ views: [AnyLayout], axis: UILayoutConstraintAxis, spacing: CGFloat = 0, distribution: UIStackViewDistribution = .fill, alignment: UIStackViewAlignment = .fill) -> Layout<UIStackView> {
+public func stack(_ views: [AnyLayout], axis: NSLayoutConstraint.Axis, spacing: CGFloat = 0, distribution: UIStackView.Distribution = .fill, alignment: UIStackView.Alignment = .fill) -> Layout<UIStackView> {
     return Layout { revertable in
         let stackView = UIStackView()
         stackView.axis = axis
@@ -377,7 +379,7 @@ public func stack(_ views: [AnyLayout], axis: UILayoutConstraintAxis, spacing: C
 }
 
 /// Stack an array of views in a stack view.
-public func stack(_ axis: UILayoutConstraintAxis, spacing: CGFloat = 0, distribution: UIStackViewDistribution = .fill, alignment: UIStackViewAlignment = .fill) -> ((AnyLayout...) -> Layout<UIStackView>) {
+public func stack(_ axis: NSLayoutConstraint.Axis, spacing: CGFloat = 0, distribution: UIStackView.Distribution = .fill, alignment: UIStackView.Alignment = .fill) -> ((AnyLayout...) -> Layout<UIStackView>) {
     return { (views: AnyLayout...) -> Layout<UIStackView> in
         return stack(views, axis: axis, spacing: spacing, distribution: distribution, alignment: alignment)
     }
@@ -417,7 +419,7 @@ public func group(_ layouts: AnyLayout...) -> Layout<LayoutGroup> {
 extension LayoutProtocol where LayoutNode: UIView {
 
     /// Modify the node's hugging priority for the given axis.
-    public func settingHugging(_ priority: UILayoutPriority, axis: UILayoutConstraintAxis) -> Layout<LayoutNode> {
+    public func settingHugging(_ priority: UILayoutPriority, axis: NSLayoutConstraint.Axis) -> Layout<LayoutNode> {
         return Layout { revertable in
             let node = self.makeLayoutNode(revertable)
             let oldValue = node.contentHuggingPriority(for: axis)
@@ -430,7 +432,7 @@ extension LayoutProtocol where LayoutNode: UIView {
     }
 
     /// Modify the node's compression resistance priority for the given axis.
-    public func settingCompressionResistance(_ priority: UILayoutPriority, axis: UILayoutConstraintAxis) -> Layout<LayoutNode> {
+    public func settingCompressionResistance(_ priority: UILayoutPriority, axis: NSLayoutConstraint.Axis) -> Layout<LayoutNode> {
         return Layout { revertable in
             let node = self.makeLayoutNode(revertable)
             let oldValue = node.contentCompressionResistancePriority(for: axis)

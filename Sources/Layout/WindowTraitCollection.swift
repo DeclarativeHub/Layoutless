@@ -14,8 +14,10 @@ public struct WindowTraitCollection: Hashable {
     public let traitCollection: UITraitCollection
     public let size: CGSize
 
-    public var hashValue: Int {
-        return (traitCollection.hashValue << 4) ^ size.width.hashValue ^ size.height.hashValue
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(traitCollection)
+        hasher.combine(size.width)
+        hasher.combine(size.height)
     }
 }
 
@@ -55,8 +57,10 @@ public struct TraitQuery: Hashable {
         self.height = height
     }
 
-    public var hashValue: Int {
-        return ((traitCollection?.hashValue) ?? 0 << 4) ^ (width?.hashValue ?? 0) ^ (height?.hashValue ?? 0)
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(traitCollection)
+        hasher.combine(width)
+        hasher.combine(height)
     }
 }
 

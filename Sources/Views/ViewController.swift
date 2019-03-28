@@ -39,7 +39,7 @@ open class ViewController: UIViewController {
     open override func viewDidLoad() {
         super.viewDidLoad()
 
-        if #available(iOS 11.0, *) {
+        if #available(iOS 11.0, tvOS 11.0, *) {
             // safeAreaLayoutGuide is already available
         } else {
             setupSafeAreaLayoutGuideFallback()
@@ -60,9 +60,13 @@ open class ViewController: UIViewController {
     }
 
     private func setupSafeAreaLayoutGuideFallback() {
-        NSLayoutConstraint.activate([
-            view.___safeAreaLayoutGuide.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor),
-            view.___safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor)
-        ])
+        if #available(iOS 11, tvOS 11, *) {
+            // Good to go
+        } else {
+            NSLayoutConstraint.activate([
+                view.___safeAreaLayoutGuide.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor),
+                view.___safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor)
+            ])
+        }
     }
 }

@@ -35,7 +35,7 @@ open class Label: UILabel {
     /// Text insets. Use it to add padding to the text within the label bounds.
     public var textInsets: UIEdgeInsets = .zero
 
-    public var attributes: [NSAttributedStringKey: Any] = [:] {
+    public var attributes: [NSAttributedString.Key: Any] = [:] {
         didSet {
             if let text = text {
                 self.text = text
@@ -93,7 +93,7 @@ open class Label: UILabel {
     }
 
     open override func drawText(in rect: CGRect) {
-        super.drawText(in: UIEdgeInsetsInsetRect(rect, textInsets))
+        super.drawText(in: rect.inset(by: textInsets))
     }
 
     open override var text: String? {

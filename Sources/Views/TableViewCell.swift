@@ -30,7 +30,7 @@ open class TableViewCell: UITableViewCell {
     /// Use it to configure styles that are derived from the view bounds.
     public var onLayout: (TableViewCell) -> Void = { _ in }
 
-    public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
         defineLayout()

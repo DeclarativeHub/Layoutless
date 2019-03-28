@@ -23,6 +23,8 @@ class ViewController: Layoutless.ViewController {
 
     override var subviewsLayout: AnyLayout {
 
+        // Test with iPad Split Screen and 1/3 screen
+
         let rectLayout = layoutSet(
             traitQuery(width: .greaterThanOrEqualTo(1001)) {
                 rect.sizing(toWidth: 60).sizing(toHeight: 10)
