@@ -83,10 +83,15 @@ extension Style {
     }
 
     /// Returns current style modified by the given closure.
-    public func modifying(_ other: @escaping (View) -> Void) -> Style {
+    public func modifying(_ style: @escaping (View) -> Void) -> Style {
         return Style {
             self.apply(to: $0)
-            other($0)
+            style($0)
         }
+    }
+
+    /// Modify current style in place.
+    public mutating func modify(_ style: @escaping (View) -> Void) {
+        self = modifying(style)
     }
 }
