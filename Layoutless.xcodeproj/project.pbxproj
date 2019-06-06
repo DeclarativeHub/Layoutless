@@ -70,6 +70,7 @@
 		EC2870F1201E44CE00702624 /* Layoutless+UIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Layoutless+UIKit.swift"; sourceTree = "<group>"; };
 		EC2870F3201E455A00702624 /* LayoutNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutNode.swift; sourceTree = "<group>"; };
 		EC7AD57222A992C300643A24 /* UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI.swift; sourceTree = "<group>"; };
+		EC7AD57522A9934E00643A24 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		EC8287702099D56F00E371EC /* UIView+iOS10.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+iOS10.swift"; sourceTree = "<group>"; };
 		ECC45DD920DE7C6A00E13399 /* Revertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Revertable.swift; sourceTree = "<group>"; };
 		ECC45DDC20DE7CB300E13399 /* WindowTraitCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowTraitCollection.swift; sourceTree = "<group>"; };
@@ -197,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				ECCF2DFF20274D8D008099DD /* README.md */,
+				EC7AD57522A9934E00643A24 /* Package.swift */,
 				ECCF2E2020275244008099DD /* Layoutless.podspec */,
 			);
 			name = Meta;
