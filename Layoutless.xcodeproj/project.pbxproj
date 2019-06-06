@@ -16,6 +16,8 @@
 		EC2870F4201E455A00702624 /* LayoutNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2870F3201E455A00702624 /* LayoutNode.swift */; };
 		EC7AD57322A992C300643A24 /* UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7AD57222A992C300643A24 /* UI.swift */; };
 		EC7AD57422A992C300643A24 /* UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7AD57222A992C300643A24 /* UI.swift */; };
+		EC7AD57722A993A900643A24 /* Deprecations.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7AD57622A993A900643A24 /* Deprecations.swift */; };
+		EC7AD57822A993A900643A24 /* Deprecations.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7AD57622A993A900643A24 /* Deprecations.swift */; };
 		EC8287712099D56F00E371EC /* UIView+iOS10.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8287702099D56F00E371EC /* UIView+iOS10.swift */; };
 		EC8287722099D56F00E371EC /* UIView+iOS10.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8287702099D56F00E371EC /* UIView+iOS10.swift */; };
 		ECC45DDA20DE7C6A00E13399 /* Revertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC45DD920DE7C6A00E13399 /* Revertable.swift */; };
@@ -71,6 +73,7 @@
 		EC2870F3201E455A00702624 /* LayoutNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutNode.swift; sourceTree = "<group>"; };
 		EC7AD57222A992C300643A24 /* UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UI.swift; sourceTree = "<group>"; };
 		EC7AD57522A9934E00643A24 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		EC7AD57622A993A900643A24 /* Deprecations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deprecations.swift; sourceTree = "<group>"; };
 		EC8287702099D56F00E371EC /* UIView+iOS10.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+iOS10.swift"; sourceTree = "<group>"; };
 		ECC45DD920DE7C6A00E13399 /* Revertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Revertable.swift; sourceTree = "<group>"; };
 		ECC45DDC20DE7CB300E13399 /* WindowTraitCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowTraitCollection.swift; sourceTree = "<group>"; };
@@ -182,6 +185,7 @@
 				ECCF2D912024C03A008099DD /* UI.CollectionViewCell.swift */,
 				ECCF2D8E2024C03A008099DD /* UI.ViewController.swift */,
 				ECC45DDF20DE7F4D00E13399 /* UI.Window.swift */,
+				EC7AD57622A993A900643A24 /* Deprecations.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -340,6 +344,7 @@
 				ECE4C74B22A97041002FFC51 /* UI.Label.swift in Sources */,
 				ECC45DDA20DE7C6A00E13399 /* Revertable.swift in Sources */,
 				ECE4C74A22A97041002FFC51 /* UI.Control.swift in Sources */,
+				EC7AD57722A993A900643A24 /* Deprecations.swift in Sources */,
 				EC7AD57322A992C300643A24 /* UI.swift in Sources */,
 				EC2870EC201E444700702624 /* Anchorable.swift in Sources */,
 				ECE4C75122A97041002FFC51 /* UI.ViewController.swift in Sources */,
@@ -371,6 +376,7 @@
 				ECE4C74122A97040002FFC51 /* UI.Label.swift in Sources */,
 				ECCF2E1420274F82008099DD /* Layoutless.swift in Sources */,
 				ECE4C74022A97040002FFC51 /* UI.Control.swift in Sources */,
+				EC7AD57822A993A900643A24 /* Deprecations.swift in Sources */,
 				EC7AD57422A992C300643A24 /* UI.swift in Sources */,
 				ECC45DDB20DE7C6A00E13399 /* Revertable.swift in Sources */,
 				ECCF2E1120274F82008099DD /* LayoutProtocol.swift in Sources */,
