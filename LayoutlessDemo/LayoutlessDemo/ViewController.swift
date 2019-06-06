@@ -9,13 +9,14 @@
 import UIKit
 import Layoutless
 
-class ViewController: Layoutless.ViewController {
+class ViewController: UI.ViewController {
 
     let button = UIButton()
     let rect = UIView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         button.setTitle("Button", for: .normal)
         button.backgroundColor = .red
         rect.backgroundColor = .green

@@ -328,11 +328,6 @@ extension LayoutProtocol where LayoutNode: Anchorable {
 
 extension LayoutProtocol {
 
-    @available(*, deprecated, renamed: "embedding(in:)")
-    public func emedding<View: UIView>(in view: View) -> Layout<View> {
-        return embedding(in: view)
-    }
-
     /// Embed the node in the given view and return the layout that has the given view as a root node.
     public func embedding<View: UIView>(in view: View) -> Layout<View> {
         return Layout { revertable in

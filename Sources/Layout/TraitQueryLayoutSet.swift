@@ -60,7 +60,7 @@ public class TraitQueryLayoutSet: LayoutNode {
 
     private func updateLayout() {
         guard let container = container else { return }
-        let window = (container.window ?? UIApplication.shared.keyWindow) as? Window
+        let window = (container.window ?? UIApplication.shared.keyWindow) as? UI.Window
         let windowTraitCollection = window?.windowTraitCollection ?? WindowTraitCollection(traitCollection: UIScreen.main.traitCollection, size: UIScreen.main.bounds.size)
         if let layout = layouts.first(where: { windowTraitCollection.matches($0.key) }) {
             guard previousLayoutKey != layout.key else { return }
