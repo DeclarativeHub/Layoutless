@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "Layoutless",
     platforms: [
-        .macOS(.v10_11), .iOS(.v8), .tvOS(.v9), .watchOS(.v2)
+        .iOS(.v9), .tvOS(.v9)
     ],
     products: [
         .library(name: "Layoutless", targets: ["Layoutless"])
