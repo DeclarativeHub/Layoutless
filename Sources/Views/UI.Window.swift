@@ -71,7 +71,7 @@ extension UI {
                 NSLayoutConstraint.activate([
                     ___safeAreaLayoutGuide.topAnchor.constraint(equalTo: superview.___safeAreaLayoutGuide.topAnchor),
                     ___safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: superview.___safeAreaLayoutGuide.bottomAnchor)
-                    ])
+                ])
             }
         }
         
