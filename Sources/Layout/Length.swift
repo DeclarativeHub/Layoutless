@@ -24,9 +24,6 @@
 
 import UIKit
 
-@available(*, deprecated, renamed: "Length")
-public typealias Dimension = Length
-
 /// A type that represents a spatial dimension like width, height, inset, offset, etc.
 /// Expressible by float or integer literal.
 public enum Length: Hashable, ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral {

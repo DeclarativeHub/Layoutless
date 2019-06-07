@@ -27,10 +27,10 @@ import ObjectiveC
 
 // MARK: Hiererchy based layout
 
-extension LayoutProtocol where LayoutNode: Anchorable {
+extension LayoutProtocol where Node: Anchorable {
 
     /// Provides a way to layout a node with respect to the given descendent node.
-    public func layoutRelativeToDescendent(_ descendent: Anchorable, layout: @escaping (Anchorable, LayoutNode) -> Void) -> Layout<LayoutNode> {
+    public func layoutRelativeToDescendent(_ descendent: Anchorable, layout: @escaping (Anchorable, Node) -> Void) -> Layout<Node> {
         return Layout { revertable in
             let node = self.makeLayoutNode(revertable)
             layout(descendent, node)
@@ -39,14 +39,14 @@ extension LayoutProtocol where LayoutNode: Anchorable {
     }
 
     /// Provides a way to layout a node with respect to the node's eventual parent node.
-    public func layoutRelativeToParent(_ layout: @escaping (Anchorable, LayoutNode, Revertable) -> Void) -> Layout<ChildNode<LayoutNode>> {
+    public func layoutRelativeToParent(_ layout: @escaping (Anchorable, Node, Revertable) -> Void) -> Layout<ChildNode<Node>> {
         return Layout { revertable in
             return ChildNode(self.makeLayoutNode(revertable), layout: layout)
         }
     }
 
     /// Provides a way to layout a node with respect to the node's eventual parent node or its safe area.
-    public func layoutRelativeToParent(safeArea: Bool, layout: @escaping (Anchorable, LayoutNode, Revertable) -> Void) -> Layout<ChildNode<LayoutNode>> {
+    public func layoutRelativeToParent(safeArea: Bool, layout: @escaping (Anchorable, Node, Revertable) -> Void) -> Layout<ChildNode<Node>> {
         return Layout { parentRevertable in
             return ChildNode(self.makeLayoutNode(parentRevertable)) { parent, node, revertable in
                 parentRevertable.append(revertable)
@@ -66,10 +66,10 @@ extension LayoutProtocol where LayoutNode: Anchorable {
 
 // MARK: Sizing
 
-extension LayoutProtocol where LayoutNode: Anchorable {
+extension LayoutProtocol where Node: Anchorable {
 
     /// Constrain the node to the given width.
-    public func sizing(toWidth width: Length) -> Layout<LayoutNode> {
+    public func sizing(toWidth width: Length) -> Layout<Node> {
         return Layout { revertable in
             let node = self.makeLayoutNode(revertable)
             let constraint = width.constrainToConstant(node.widthAnchor)
@@ -82,7 +82,7 @@ extension LayoutProtocol where LayoutNode: Anchorable {
     }
 
     /// Constrain the node to the given height.
-    public func sizing(toHeight height: Length) -> Layout<LayoutNode> {
+    public func sizing(toHeight height: Length) -> Layout<Node> {
         return Layout { revertable in
             let node = self.makeLayoutNode(revertable)
             let constraint = height.constrainToConstant(node.heightAnchor)
@@ -95,7 +95,7 @@ extension LayoutProtocol where LayoutNode: Anchorable {
     }
 
     /// Constrain the node to the given width and height.
-    public func sizing(toWidth width: Length, height: Length) -> Layout<LayoutNode> {
+    public func sizing(toWidth width: Length, height: Length) -> Layout<Node> {
         return Layout { revertable in
             let node = self.makeLayoutNode(revertable)
             let cw = width.constrainToConstant(node.widthAnchor)
@@ -110,13 +110,13 @@ extension LayoutProtocol where LayoutNode: Anchorable {
 
     /// Constrain the node width and/or height to node's parent width and/or heigh with an offset.
     /// Default offset is 0. Pass `nil` for a given dimension offset to not constrain that dimension.
-    public func sizingToParent(widthOffset: Length? = 0, heightOffset: Length? = 0) -> Layout<ChildNode<LayoutNode>> {
+    public func sizingToParent(widthOffset: Length? = 0, heightOffset: Length? = 0) -> Layout<ChildNode<Node>> {
         return sizingToParent(widthOffset: widthOffset, heightOffset: heightOffset, relativeToSafeArea: false)
     }
 
     /// Constrain the node width and/or height to node's parent width and/or heigh with an offset.
     /// Default offset is 0. Pass `nil` for a given dimension offset to not constrain that dimension.
-    public func sizingToParent(widthOffset: Length? = 0, heightOffset: Length? = 0, relativeToSafeArea: Bool) -> Layout<ChildNode<LayoutNode>> {
+    public func sizingToParent(widthOffset: Length? = 0, heightOffset: Length? = 0, relativeToSafeArea: Bool) -> Layout<ChildNode<Node>> {
         return layoutRelativeToParent(safeArea: relativeToSafeArea) { parent, node, revertable in
             if let widthOffset = widthOffset {
                 let constraint = widthOffset.constrain(node.widthAnchor, to: parent.widthAnchor)
@@ -136,7 +136,7 @@ extension LayoutProtocol where LayoutNode: Anchorable {
     }
 
     /// Constrain node's width to height using the given aspect ratio.
-    public func constrainingAspectRatio(to aspectRatio: CGFloat) -> Layout<LayoutNode> {
+    public func constrainingAspectRatio(to aspectRatio: CGFloat) -> Layout<Node> {
         return Layout { revertable in
             let node = self.makeLayoutNode(revertable)
             let constraint = node.widthAnchor.constraint(equalTo: node.heightAnchor, multiplier: aspectRatio)
@@ -151,7 +151,7 @@ extension LayoutProtocol where LayoutNode: Anchorable {
 
 // MARK: Insetting
 
-extension LayoutProtocol where LayoutNode: Anchorable {
+extension LayoutProtocol where Node: Anchorable {
 
     /// Inset the node by wrapping it in a dummy view and filling it using the given insets.
     public func insetting(leftBy left: CGFloat, rightBy right: CGFloat, topBy top: CGFloat, bottomBy bottom: CGFloat) -> Layout<UIView> {
@@ -175,25 +175,25 @@ extension LayoutProtocol where LayoutNode: Anchorable {
 
 // MARK: Centering in parent
 
-extension LayoutProtocol where LayoutNode: Anchorable {
+extension LayoutProtocol where Node: Anchorable {
 
     /// Center the node vertically within the parent using the given y-offset. Default offset is 0.
-    public func centeringVerticallyInParent(offset: Length = 0, relativeToSafeArea: Bool = false) -> Layout<ChildNode<LayoutNode>> {
+    public func centeringVerticallyInParent(offset: Length = 0, relativeToSafeArea: Bool = false) -> Layout<ChildNode<Node>> {
         return centeringInParent(xOffset: nil, yOffset: offset, relativeToSafeArea: relativeToSafeArea)
     }
 
     /// Center the node horizontally within the parent using the given x-offset. Default offset is 0.
-    public func centeringHorizontallyInParent(offset: Length = 0, relativeToSafeArea: Bool = false) -> Layout<ChildNode<LayoutNode>> {
+    public func centeringHorizontallyInParent(offset: Length = 0, relativeToSafeArea: Bool = false) -> Layout<ChildNode<Node>> {
         return centeringInParent(xOffset: offset, yOffset: nil, relativeToSafeArea: relativeToSafeArea)
     }
 
     /// Center the node vertically and horizontally within the parent using the given x- and y- offsets. Default offsets are 0.
-    public func centeringInParent(xOffset: Length? = 0, yOffset: Length? = 0) -> Layout<ChildNode<LayoutNode>> {
+    public func centeringInParent(xOffset: Length? = 0, yOffset: Length? = 0) -> Layout<ChildNode<Node>> {
         return centeringInParent(xOffset: xOffset, yOffset: yOffset, relativeToSafeArea: false)
     }
 
     /// Center the node vertically and horizontally within the parent using the given x- and y- offsets. Default offsets are 0.
-    public func centeringInParent(xOffset: Length? = 0, yOffset: Length? = 0, relativeToSafeArea: Bool) -> Layout<ChildNode<LayoutNode>> {
+    public func centeringInParent(xOffset: Length? = 0, yOffset: Length? = 0, relativeToSafeArea: Bool) -> Layout<ChildNode<Node>> {
         return layoutRelativeToParent(safeArea: relativeToSafeArea) { parent, node, revertable in
             if let xOffset = xOffset {
                 let constraint = xOffset.constrain(node.centerXAnchor, to: parent.centerXAnchor)
@@ -215,35 +215,35 @@ extension LayoutProtocol where LayoutNode: Anchorable {
 
 // MARK: Filling and sticking to parent
 
-extension LayoutProtocol where LayoutNode: Anchorable {
+extension LayoutProtocol where Node: Anchorable {
 
     /// Constrain all four node's edges to the parent node's edges using the given insets.
-    public func fillingParent(insets: CGFloat, relativeToSafeArea: Bool = false) -> Layout<ChildNode<LayoutNode>> {
+    public func fillingParent(insets: CGFloat, relativeToSafeArea: Bool = false) -> Layout<ChildNode<Node>> {
         return stickingToParentEdges(left: .exactly(insets), right: .exactly(insets), top: .exactly(insets), bottom: .exactly(insets), relativeToSafeArea: relativeToSafeArea)
     }
 
     /// Constrain all four node's edges to the parent node's edges using the given insets.
-    public func fillingParent(insets: UIEdgeInsets, relativeToSafeArea: Bool = false) -> Layout<ChildNode<LayoutNode>> {
+    public func fillingParent(insets: UIEdgeInsets, relativeToSafeArea: Bool = false) -> Layout<ChildNode<Node>> {
         return stickingToParentEdges(left: .exactly(insets.left), right: .exactly(insets.right), top: .exactly(insets.top), bottom: .exactly(insets.bottom), relativeToSafeArea: relativeToSafeArea)
     }
 
     /// Constrain all four node's edges to the parent node's edges using the given insets. Default insets are 0.
-    public func fillingParent(insets: (left: Length, right: Length, top: Length, bottom: Length) = (0, 0, 0, 0)) -> Layout<ChildNode<LayoutNode>> {
+    public func fillingParent(insets: (left: Length, right: Length, top: Length, bottom: Length) = (0, 0, 0, 0)) -> Layout<ChildNode<Node>> {
         return stickingToParentEdges(left: insets.left, right: insets.right, top: insets.top, bottom: insets.bottom, relativeToSafeArea: false)
     }
 
     /// Constrain all four node's edges to the parent node's edges using the given insets. Default insets are 0.
-    public func fillingParent(insets: (left: Length, right: Length, top: Length, bottom: Length) = (0, 0, 0, 0), relativeToSafeArea: Bool) -> Layout<ChildNode<LayoutNode>> {
+    public func fillingParent(insets: (left: Length, right: Length, top: Length, bottom: Length) = (0, 0, 0, 0), relativeToSafeArea: Bool) -> Layout<ChildNode<Node>> {
         return stickingToParentEdges(left: insets.left, right: insets.right, top: insets.top, bottom: insets.bottom, relativeToSafeArea: relativeToSafeArea)
     }
 
     /// Constrain node's edges to the parent node's edges using the given insets. Only edges with non-nil insets will be constrained! Default insets are nil.
-    public func stickingToParentEdges(left: Length? = nil, right: Length? = nil, top: Length? = nil, bottom: Length? = nil) -> Layout<ChildNode<LayoutNode>> {
+    public func stickingToParentEdges(left: Length? = nil, right: Length? = nil, top: Length? = nil, bottom: Length? = nil) -> Layout<ChildNode<Node>> {
         return stickingToParentEdges(left: left, right: right, top: top, bottom: bottom, relativeToSafeArea: false)
     }
 
     /// Constrain node's edges to the parent node's edges using the given insets. Only edges with non-nil insets will be constrained! Default insets are nil.
-    public func stickingToParentEdges(left: Length? = nil, right: Length? = nil, top: Length? = nil, bottom: Length? = nil, relativeToSafeArea: Bool) -> Layout<ChildNode<LayoutNode>> {
+    public func stickingToParentEdges(left: Length? = nil, right: Length? = nil, top: Length? = nil, bottom: Length? = nil, relativeToSafeArea: Bool) -> Layout<ChildNode<Node>> {
         return layoutRelativeToParent(safeArea: relativeToSafeArea) { parent, node, revertable in
             if let left = left {
                 let constraint = left.constrain(node.leftAnchor, to: parent.leftAnchor)
@@ -279,9 +279,9 @@ extension LayoutProtocol where LayoutNode: Anchorable {
 
 // MARK: Scrolling
 
-extension LayoutProtocol where LayoutNode: Anchorable {
+extension LayoutProtocol where Node: Anchorable {
 
-    public func scrolling<ScrollView: UIScrollView>(scrollViewType: ScrollView.Type, layoutToScrollViewParent: @escaping (Layout<LayoutNode>) -> Layout<ChildNode<LayoutNode>>, configure: @escaping (ScrollView) -> Void = { _ in }) -> Layout<ChildNode<ScrollView>> {
+    public func scrolling<ScrollView: UIScrollView>(scrollViewType: ScrollView.Type, layoutToScrollViewParent: @escaping (Layout<Node>) -> Layout<ChildNode<Node>>, configure: @escaping (ScrollView) -> Void = { _ in }) -> Layout<ChildNode<ScrollView>> {
         return Layout { revertable in
             return ChildNode(ScrollView()) { container, scrollView, childRevertable in
                 revertable.append(childRevertable)
@@ -337,10 +337,10 @@ extension LayoutProtocol {
     }
 }
 
-extension LayoutProtocol where LayoutNode: UIView {
+extension LayoutProtocol where Node: UIView {
 
     /// Add the given view as a subview of the node and return the layout that has the node as a root node.
-    public func addingSubview(_ subview: LayoutNode) -> Layout<LayoutNode> {
+    public func addingSubview(_ subview: Node) -> Layout<Node> {
         return Layout { revertable in
             let node = self.makeLayoutNode(revertable)
             revertable.append(subview.layout(in: node))
@@ -349,7 +349,7 @@ extension LayoutProtocol where LayoutNode: UIView {
     }
 
     /// Layout the given layout within the node and return the layout that has the node as a root node.
-    public func addingLayout(_ layout: AnyLayout) -> Layout<LayoutNode> {
+    public func addingLayout(_ layout: AnyLayout) -> Layout<Node> {
         return Layout { revertable in
             let node = self.makeLayoutNode(revertable)
             revertable.append(layout.makeAnyLayoutNode(revertable).layout(in: node))
@@ -411,10 +411,10 @@ public func group(_ layouts: AnyLayout...) -> Layout<LayoutGroup> {
 
 // MARK: Configuring intrinsic size behaviour
 
-extension LayoutProtocol where LayoutNode: UIView {
+extension LayoutProtocol where Node: UIView {
 
     /// Modify the node's hugging priority for the given axis.
-    public func settingHugging(_ priority: UILayoutPriority, axis: NSLayoutConstraint.Axis) -> Layout<LayoutNode> {
+    public func settingHugging(_ priority: UILayoutPriority, axis: NSLayoutConstraint.Axis) -> Layout<Node> {
         return Layout { revertable in
             let node = self.makeLayoutNode(revertable)
             let oldValue = node.contentHuggingPriority(for: axis)
@@ -427,7 +427,7 @@ extension LayoutProtocol where LayoutNode: UIView {
     }
 
     /// Modify the node's compression resistance priority for the given axis.
-    public func settingCompressionResistance(_ priority: UILayoutPriority, axis: NSLayoutConstraint.Axis) -> Layout<LayoutNode> {
+    public func settingCompressionResistance(_ priority: UILayoutPriority, axis: NSLayoutConstraint.Axis) -> Layout<Node> {
         return Layout { revertable in
             let node = self.makeLayoutNode(revertable)
             let oldValue = node.contentCompressionResistancePriority(for: axis)
