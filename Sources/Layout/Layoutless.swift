@@ -362,25 +362,25 @@ extension LayoutProtocol where Node: UIView {
 
 /// Stack an array of views in a stack view.
 public func stack(_ views: [AnyLayout], axis: NSLayoutConstraint.Axis, spacing: CGFloat = 0, distribution: UIStackView.Distribution = .fill, alignment: UIStackView.Alignment = .fill, configure: @escaping (UIStackView) -> Void = { _ in }) -> Layout<UIStackView> {
-	return Layout { revertable in
-		let stackView = UIStackView()
-		stackView.axis = axis
-		stackView.spacing = spacing
-		stackView.distribution = distribution
-		stackView.alignment = alignment
-		views.forEach {
-			revertable.append($0.layout(in: stackView))
-		}
-		configure(stackView)
-		return stackView
-	}
+    return Layout { revertable in
+        let stackView = UIStackView()
+        stackView.axis = axis
+        stackView.spacing = spacing
+        stackView.distribution = distribution
+        stackView.alignment = alignment
+        views.forEach {
+            revertable.append($0.layout(in: stackView))
+        }
+        configure(stackView)
+        return stackView
+    }
 }
 
 /// Stack an array of views in a stack view.
 public func stack(_ axis: NSLayoutConstraint.Axis, spacing: CGFloat = 0, distribution: UIStackView.Distribution = .fill, alignment: UIStackView.Alignment = .fill, configure: @escaping (UIStackView) -> Void = { _ in }) -> ((AnyLayout...) -> Layout<UIStackView>) {
-	return { (views: AnyLayout...) -> Layout<UIStackView> in
-		return stack(views, axis: axis, spacing: spacing, distribution: distribution, alignment: alignment,configure: configure)
-	}
+    return { (views: AnyLayout...) -> Layout<UIStackView> in
+        return stack(views, axis: axis, spacing: spacing, distribution: distribution, alignment: alignment, configure: configure)
+    }
 }
 
 // MARK: Grouping
