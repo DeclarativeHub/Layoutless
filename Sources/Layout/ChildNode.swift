@@ -22,6 +22,8 @@
 //  THE SOFTWARE.
 //
 
+import UIKit
+
 /// A decorator over child layout node that provides a way for the child to layout itself
 /// with the respect to the parent it will eventually be added to.
 public class ChildNode<Child: LayoutNode>: LayoutNode, Anchorable where Child: Anchorable {
