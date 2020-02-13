@@ -23,6 +23,7 @@
 //
 
 import Foundation
+import UIKit
 
 /// A type-erased `LayoutProtocol`.
 public protocol AnyLayout: LayoutNode {
