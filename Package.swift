@@ -2,12 +2,12 @@
 import PackageDescription
 
 let package = Package(
-    name: "Layoutless",
+    name: "LayoutlessRebeloper",
     platforms: [
         .iOS(.v9), .tvOS(.v9)
     ],
     products: [
-        .library(name: "Layoutless", targets: ["Layoutless"])
+        .library(name: "LayoutlessRebeloper", targets: ["Layoutless"])
     ],
     targets: [
         .target(name: "Layoutless", path: "Sources")
