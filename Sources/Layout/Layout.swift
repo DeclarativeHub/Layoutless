@@ -22,6 +22,8 @@
 //  THE SOFTWARE.
 //
 
+import UIKit
+
 /// A type that represents layout calculation as a closure.
 public struct Layout<LayoutNode: Layoutless.LayoutNode>: LayoutProtocol {
 
