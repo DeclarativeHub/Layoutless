@@ -45,7 +45,8 @@ public class TraitQueryLayoutSet: LayoutNode {
         updateLayout()
         NotificationCenter.default.addObserver(self, selector: #selector(didChangeTraitCollection), name: .windowTraitCollectionDidChange, object: nil)
         let revertable = Revertable()
-        revertable.appendBlock {
+        revertable.appendBlock { [weak self] in
+            guard let self = self else { return }
             self.container = nil
             self.revertable?.revert()
             NotificationCenter.default.removeObserver(self)
